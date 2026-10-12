@@ -1,2 +1,2 @@
-# sorpresa-cumplea-os-amigis
+# sorpresa-cumpleaños-amigis
 Sorpresa de cumpleaños
