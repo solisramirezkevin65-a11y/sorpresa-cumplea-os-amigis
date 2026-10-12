@@ -1,0 +1,2992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feliz cumpleaños 💙</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            min-height: 100svh;
+            margin: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            font-family: Arial, sans-serif;
+            color: white;
+            background: #02070d;
+        }
+
+
+        /* =========================================
+           PANTALLA DE CARGA
+        ========================================= */
+
+        /* =========================================
+        PANTALLA DE CARGA — PANDORA
+        ========================================= */
+
+        #pantallaCarga {
+
+            position: fixed;
+            inset: 0;
+
+            z-index: 100;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 42%,
+                    rgba(20, 120, 145, 0.55) 0%,
+                    rgba(8, 50, 70, 0.45) 28%,
+                    rgba(3, 15, 28, 0.85) 62%,
+                    #02050d 100%
+                );
+
+            transition:
+                opacity 1.4s ease,
+                visibility 1.4s ease;
+        }
+
+
+        /* Luz azul ambiental */
+
+        #pantallaCarga::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 65vw;
+            height: 65vw;
+
+            max-width: 700px;
+            max-height: 700px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(60, 221, 220, 0.16),
+                    transparent 70%
+                );
+
+            filter: blur(20px);
+
+            animation:
+                pulsoPandora 5s ease-in-out infinite;
+
+            pointer-events: none;
+        }
+
+
+        /* Luz violeta */
+
+        #pantallaCarga::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 45vw;
+            height: 45vw;
+
+            max-width: 500px;
+            max-height: 500px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(133, 91, 214, 0.13),
+                    transparent 70%
+                );
+
+            filter: blur(30px);
+
+            animation:
+                moverLuz 8s ease-in-out infinite alternate;
+
+            pointer-events: none;
+        }
+
+
+        #pantallaCarga.oculta {
+
+            opacity: 0;
+            visibility: hidden;
+        }
+
+
+        /* =========================================
+        LUCES BIOLUMINISCENTES
+        ========================================= */
+
+        .luzPandora {
+
+            position: absolute;
+
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: #65e8ed;
+
+            box-shadow:
+                0 0 6px #65e8ed,
+                0 0 14px #65e8ed,
+                0 0 25px rgba(101, 232, 237, 0.5);
+
+            animation:
+                respirarLuz 3s ease-in-out infinite;
+
+            pointer-events: none;
+        }
+
+
+        .luzPandora.violeta {
+
+            background: #a77bea;
+
+            box-shadow:
+                0 0 6px #a77bea,
+                0 0 14px #a77bea,
+                0 0 25px rgba(167, 123, 234, 0.5);
+        }
+
+
+        /* =========================================
+        VEGETACIÓN DE PANDORA
+        ========================================= */
+
+        .vegetacion {
+
+            position: absolute;
+
+            bottom: -40px;
+
+            width: 100%;
+            height: 170px;
+
+            pointer-events: none;
+
+            opacity: 0.55;
+        }
+
+
+        .planta {
+
+            position: absolute;
+
+            bottom: 0;
+
+            width: 3px;
+            height: 130px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(4, 24, 31, 0.95),
+                    rgba(20, 119, 120, 0.35)
+                );
+
+            transform-origin: bottom;
+
+            filter:
+                drop-shadow(
+                    0 0 5px rgba(45, 210, 205, 0.2)
+                );
+        }
+
+
+        .planta::before,
+        .planta::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 35px;
+            height: 75px;
+
+            border-radius:
+                100% 0 100% 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(30, 163, 156, 0.2),
+                    rgba(4, 25, 34, 0.9)
+                );
+        }
+
+
+        .planta::before {
+
+            right: 0;
+            top: 25px;
+
+            transform: rotate(35deg);
+        }
+
+
+        .planta::after {
+
+            left: 0;
+            top: 55px;
+
+            transform: rotate(-35deg);
+        }
+
+
+        .planta:nth-child(1) {
+            left: 5%;
+            height: 100px;
+            transform: rotate(-8deg);
+        }
+
+
+        .planta:nth-child(2) {
+            left: 16%;
+            height: 145px;
+            transform: rotate(7deg);
+        }
+
+
+        .planta:nth-child(3) {
+            left: 31%;
+            height: 110px;
+            transform: rotate(-5deg);
+        }
+
+
+        .planta:nth-child(4) {
+            left: 50%;
+            height: 155px;
+            transform: rotate(4deg);
+        }
+
+
+        .planta:nth-child(5) {
+            left: 67%;
+            height: 120px;
+            transform: rotate(-7deg);
+        }
+
+
+        .planta:nth-child(6) {
+            left: 82%;
+            height: 150px;
+            transform: rotate(8deg);
+        }
+
+
+        .planta:nth-child(7) {
+            left: 94%;
+            height: 105px;
+            transform: rotate(-8deg);
+        }
+
+
+        /* =========================================
+        CONTENIDO DE CARGA
+        ========================================= */
+
+        .contenidoCarga {
+
+            position: relative;
+
+            z-index: 5;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+
+            width: min(90%, 600px);
+
+            text-align: center;
+        }
+
+
+        .tituloCarga {
+
+            font-size:
+                clamp(
+                    2.2rem,
+                    9vw,
+                    4.5rem
+                );
+
+            text-align: center;
+
+            letter-spacing: 2px;
+
+            color: #e5ffff;
+
+            text-shadow:
+                0 0 8px #66e8ee,
+                0 0 20px #29bfc9,
+                0 0 45px rgba(57, 218, 225, 0.7),
+                0 0 80px rgba(48, 162, 188, 0.4);
+
+            animation:
+                aparecerTitulo 1.8s ease forwards,
+                brilloTitulo 3s ease-in-out 1.8s infinite;
+        }
+
+
+        .textoCarga {
+
+            margin-top: 15px;
+
+            color: #c7f7f5;
+
+            font-size:
+                clamp(
+                    0.85rem,
+                    2.5vw,
+                    1rem
+                );
+
+            text-shadow:
+                0 0 8px rgba(99, 225, 224, 0.5);
+
+            opacity: 0;
+
+            animation:
+                aparecerTexto 1.5s ease 1s forwards;
+        }
+
+
+        /* =========================================
+        BARRA DE ENERGÍA
+        ========================================= */
+
+        .barraCarga {
+
+            position: relative;
+
+            width:
+                min(
+                    260px,
+                    70vw
+                );
+
+            height: 5px;
+
+            margin-top: 30px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.10
+                );
+
+            box-shadow:
+                0 0 8px rgba(45, 201, 208, 0.15);
+        }
+
+
+        .progreso {
+
+            position: relative;
+
+            width: 0%;
+            height: 100%;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #147f9c,
+                    #55e4e4,
+                    #b184ef
+                );
+
+            box-shadow:
+                0 0 8px #65e8ed,
+                0 0 18px #65e8ed,
+                0 0 30px rgba(95, 230, 225, 0.6);
+
+            animation:
+                cargar 4s linear forwards;
+        }
+
+
+        .progreso::after {
+
+            content: "";
+
+            position: absolute;
+
+            right: -4px;
+            top: 50%;
+
+            width: 9px;
+            height: 9px;
+
+            transform:
+                translateY(-50%);
+
+            border-radius: 50%;
+
+            background: #dfffff;
+
+            box-shadow:
+                0 0 7px #65e8ed,
+                0 0 16px #65e8ed,
+                0 0 25px #a77bea;
+        }
+
+
+        /* =========================================
+        TEXTO DE ESTADO
+        ========================================= */
+
+        .estadoCarga {
+
+            margin-top: 12px;
+
+            font-size: 0.7rem;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            color:
+                rgba(
+                    173,
+                    239,
+                    238,
+                    0.55
+                );
+
+            opacity: 0;
+
+            animation:
+                aparecerTexto 1s ease 2s forwards;
+        }
+
+
+        /* =========================================
+           ESCENA DE NEYTIRI
+        ========================================= */
+
+        #escenaNeytiri {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(12px, 3vw, 28px);
+            overflow-x: hidden;
+            overflow-y: auto;
+
+            /* Cambia esta ruta por la ubicación de tu imagen de fondo. */
+            background:
+                linear-gradient(
+                    rgba(2, 8, 20, 0.56),
+                    rgba(2, 8, 20, 0.72)
+                ),
+                url("imagenes/fondo.png") center center / cover no-repeat,
+                radial-gradient(
+                    circle at 50% 45%,
+                    #123d50 0%,
+                    #071b29 42%,
+                    #02070d 100%
+                );
+
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+
+        #escenaNeytiri.visible {
+
+            opacity: 1;
+        }
+
+
+        .contenedorNeytiri {
+            width: min(100%, 460px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+        }
+
+
+        /* =========================================
+           IMAGEN DE CAPI
+        ========================================= */
+
+        .zonaNeytiri {
+            width: 100%;
+            height: clamp(170px, 38svh, 300px);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: clamp(8px, 2vh, 15px);
+        }
+
+
+        #imagenNeytiri {
+            width: auto;
+            height: auto;
+            max-width: min(72vw, 270px);
+            max-height: 100%;
+            object-fit: contain;
+
+            filter:
+                drop-shadow(
+                    0 0 15px rgba(78, 220, 230, 0.25)
+                );
+
+            animation:
+                flotar 3s ease-in-out infinite;
+
+            transition:
+                opacity 0.35s ease,
+                transform 0.35s ease;
+        }
+
+
+        #imagenNeytiri.cambiando {
+
+            opacity: 0;
+
+            transform:
+                translateY(15px)
+                scale(0.95);
+        }
+
+
+        /* =========================================
+           NOMBRE DE CAPI
+        ========================================= */
+
+        .nombreNeytiri {
+
+            margin-bottom: 12px;
+
+            font-size: 0.85rem;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: #78e5e9;
+
+            text-shadow:
+                0 0 8px rgba(78, 220, 230, 0.5);
+        }
+
+
+        /* =========================================
+           BURBUJA DE DIÁLOGO
+        ========================================= */
+
+        .dialogo {
+            width: 100%;
+            min-height: clamp(90px, 14vh, 120px);
+            padding: clamp(16px, 4vw, 25px);
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 24px;
+
+            background:
+                rgba(5, 24, 36, 0.82);
+
+            border:
+                1px solid rgba(102, 225, 232, 0.35);
+
+            box-shadow:
+                0 0 25px rgba(39, 180, 200, 0.12);
+
+            backdrop-filter: blur(12px);
+
+            font-size: clamp(0.95rem, 2.2vw, 1.08rem);
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+
+            animation:
+                aparecerDialogo 0.6s ease;
+        }
+
+
+        #textoDialogo {
+
+            transition:
+                opacity 0.3s ease;
+        }
+
+
+        /* =========================================
+           BOTÓN
+        ========================================= */
+
+        #botonContinuar {
+
+            margin-top: 25px;
+
+            padding: 13px 38px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background: #65e8ed;
+
+            color: #06212b;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 12px rgba(101, 232, 237, 0.45);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        #botonContinuar:hover {
+
+            transform: scale(1.06);
+
+            box-shadow:
+                0 0 25px rgba(101, 232, 237, 0.75);
+        }
+
+
+        #botonContinuar:active {
+
+            transform: scale(0.95);
+        }
+
+
+        /* =========================================
+           PARTÍCULAS
+        ========================================= */
+
+        .particula {
+
+            position: fixed;
+
+            bottom: -10px;
+
+            width: 4px;
+            height: 4px;
+
+            border-radius: 50%;
+
+            background: #71e7eb;
+
+            box-shadow:
+                0 0 8px #71e7eb;
+
+            opacity: 0;
+
+            animation:
+                subir 7s linear infinite;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================
+           ANIMACIONES
+        ========================================= */
+
+        @keyframes pulsoPandora {
+
+            0%,
+            100% {
+                transform: scale(0.85);
+                opacity: 0.55;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+
+
+        @keyframes moverLuz {
+
+            from {
+                transform:
+                    translate(25vw, 18vh);
+            }
+
+            to {
+                transform:
+                    translate(-15vw, -10vh);
+            }
+        }
+
+
+        @keyframes respirarLuz {
+
+            0%,
+            100% {
+                opacity: 0.35;
+                transform: scale(0.7);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.3);
+            }
+        }
+
+
+        @keyframes brilloTitulo {
+
+            0%,
+            100% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.18);
+            }
+        }
+
+        @keyframes cargar {
+
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+
+        @keyframes aparecerTitulo {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        @keyframes aparecerTexto {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        @keyframes flotar {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+
+        @keyframes aparecerDialogo {
+
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        @keyframes subir {
+
+            0% {
+
+                transform:
+                    translateY(0)
+                    scale(0.5);
+
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            80% {
+                opacity: 0.5;
+            }
+
+            100% {
+
+                transform:
+                    translateY(-110vh)
+                    scale(1);
+
+                opacity: 0;
+            }
+        }
+
+        /* =========================================
+           ESCENA HALLOWEEN: TODO EXISTE, PERO ESTÁ A OSCURAS
+        ========================================= */
+
+        #escenaHalloween {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            background:
+                radial-gradient(ellipse at 50% 30%, #24143b 0%, #100b20 42%, #05040a 100%);
+            transition: opacity 2.5s ease, visibility 2.5s ease;
+            isolation: isolate;
+        }
+
+        #escenaHalloween.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .paredHalloween {
+            position: absolute;
+            inset: 0 0 28% 0;
+            background:
+                radial-gradient(ellipse at 50% 100%, rgba(101, 45, 120, .22), transparent 55%),
+                linear-gradient(180deg, #100b1b, #21112b 72%, #32182b);
+            z-index: 0;
+        }
+
+        .lunaHalloween {
+            position: absolute;
+            top: 8%;
+            right: 12%;
+            width: clamp(55px, 9vw, 100px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: #f6d9a5;
+            box-shadow: 0 0 25px rgba(255, 160, 65, .25);
+            opacity: .55;
+        }
+
+        .guirnaldaHalloween {
+            position: absolute;
+            top: 13%;
+            left: -5%;
+            width: 110%;
+            height: 90px;
+            border-top: 3px solid #241527;
+            border-radius: 50%;
+            transform: rotate(2deg);
+        }
+
+        .guirnaldaHalloween::before,
+        .guirnaldaHalloween::after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            width: 13px;
+            height: 20px;
+            background: #f28b2d;
+            border-radius: 50% 50% 45% 45%;
+            box-shadow: 0 0 10px rgba(255, 122, 32, .4);
+        }
+        .guirnaldaHalloween::before { left: 24%; }
+        .guirnaldaHalloween::after { right: 24%; background: #9b6bd6; }
+
+        .murcielago {
+            position: absolute;
+            width: 36px;
+            height: 17px;
+            background: #08070d;
+            clip-path: polygon(0 15%, 30% 42%, 42% 0, 50% 35%, 62% 0, 72% 42%, 100% 15%, 85% 80%, 60% 100%, 50% 75%, 40% 100%, 15% 80%);
+            opacity: .8;
+        }
+        .murcielago.uno { top: 20%; left: 17%; transform: rotate(-12deg) scale(1.1); }
+        .murcielago.dos { top: 30%; right: 23%; transform: rotate(14deg) scale(.8); }
+        .murcielago.tres { top: 9%; left: 43%; transform: rotate(5deg) scale(.65); }
+
+        .fantasmaHalloween {
+            position: absolute;
+            width: 48px;
+            height: 58px;
+            background: rgba(232, 224, 241, .72);
+            border-radius: 50% 50% 12% 12%;
+            clip-path: polygon(0 100%, 0 35%, 8% 15%, 25% 3%, 50% 0, 75% 3%, 92% 15%, 100% 35%, 100% 100%, 80% 86%, 60% 100%, 40% 86%, 20% 100%);
+            opacity: .35;
+        }
+        .fantasmaHalloween::before {
+            content: "••";
+            position: absolute;
+            top: 22px;
+            left: 12px;
+            color: #26132f;
+            letter-spacing: 7px;
+            font-size: 13px;
+        }
+        .fantasmaHalloween.uno { left: 9%; top: 38%; transform: rotate(-8deg) scale(.85); }
+        .fantasmaHalloween.dos { right: 9%; top: 40%; transform: rotate(8deg); }
+
+        .globoHalloween {
+            position: absolute;
+            top: 29%;
+            width: clamp(42px, 7vw, 75px);
+            height: clamp(54px, 9vw, 92px);
+            border-radius: 50%;
+            background: radial-gradient(circle at 32% 25%, #a66ce0, #57217e 70%);
+            box-shadow: inset -8px -6px 15px rgba(0,0,0,.35);
+        }
+        .globoHalloween::before {
+            content: "";
+            position: absolute;
+            bottom: -7px;
+            left: 48%;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid #57217e;
+        }
+        .globoHalloween::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            height: 100px;
+            border-left: 1px solid rgba(220, 190, 230, .35);
+        }
+        .globoHalloween.izq { left: 13%; }
+        .globoHalloween.der { right: 13%; background: radial-gradient(circle at 32% 25%, #ffb64d, #b74b17 70%); }
+
+        .sueloHalloween {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 31%;
+            background: linear-gradient(180deg, #211222, #08060b);
+            border-top: 3px solid rgba(155, 92, 141, .22);
+        }
+
+        .mesaHalloween {
+            position: absolute;
+            z-index: 2;
+            left: 50%;
+            bottom: 15%;
+            width: min(76vw, 650px);
+            height: clamp(18px, 3.5vh, 30px);
+            transform: translateX(-50%);
+            border-radius: 8px;
+            background: linear-gradient(180deg, #7a3e2b, #351824 85%);
+            box-shadow: 0 10px 0 #21101a, 0 18px 25px rgba(0,0,0,.6);
+        }
+        .mesaHalloween::before,
+        .mesaHalloween::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            width: 16px;
+            height: clamp(70px, 13vh, 125px);
+            background: linear-gradient(90deg, #29131b, #603222, #21101a);
+        }
+        .mesaHalloween::before { left: 12%; }
+        .mesaHalloween::after { right: 12%; }
+
+        .tortaHalloween {
+            position: absolute;
+            z-index: 3;
+            left: 50%;
+            bottom: calc(15% + 20px);
+            width: clamp(150px, 29vw, 250px);
+            height: clamp(80px, 15vh, 125px);
+            transform: translateX(-50%);
+            border-radius: 14px 14px 22px 22px;
+            background: linear-gradient(180deg, #6c2d76 0%, #4a1b4f 60%, #30142e 100%);
+            border: 3px solid #9c5b8c;
+            box-shadow: inset 0 9px 0 rgba(255, 210, 240, .14), 0 8px 0 #251022;
+        }
+        .tortaHalloween::before {
+            content: "";
+            position: absolute;
+            left: -5%;
+            top: -13px;
+            width: 110%;
+            height: 27px;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #f2c5dc, #b56eae);
+            box-shadow: 0 3px 8px rgba(0,0,0,.25);
+        }
+        .tortaHalloween::after {
+            content: "✦  🎃  ✦";
+            position: absolute;
+            inset: 32% 0 auto;
+            color: #ffd18a;
+            text-align: center;
+            font-size: clamp(12px, 2vw, 18px);
+            letter-spacing: 3px;
+        }
+
+        .velaPastel {
+            position: absolute;
+            z-index: 6;
+            left: 50%;
+            bottom: calc(15% + 20px + clamp(72px, 15vh, 117px));
+            width: 13px;
+            height: clamp(38px, 7vh, 55px);
+            transform: translateX(-50%);
+            border-radius: 4px 4px 2px 2px;
+            background: repeating-linear-gradient(135deg, #fff0d2 0 5px, #d85b67 5px 9px);
+            box-shadow: 0 0 4px rgba(255, 230, 180, .1);
+        }
+        .mechaVela {
+            position: absolute;
+            z-index: 7;
+            left: 50%;
+            bottom: calc(15% + 20px + clamp(72px, 15vh, 117px) + clamp(38px, 7vh, 55px) - 1px);
+            width: 3px;
+            height: 9px;
+            transform: translateX(-50%);
+            background: #30202a;
+        }
+        .llamaPastel {
+            position: absolute;
+            z-index: 8;
+            left: 50%;
+            bottom: calc(15% + 20px + clamp(72px, 15vh, 117px) + clamp(38px, 7vh, 55px) + 8px);
+            width: 14px;
+            height: 25px;
+            transform: translateX(-50%) scale(.2);
+            border-radius: 50% 50% 45% 45%;
+            background: radial-gradient(ellipse at 50% 70%, #fffbd4 0 18%, #ffd75e 42%, #ff7b20 75%, transparent 100%);
+            filter: drop-shadow(0 0 8px #ffae36);
+            opacity: 0;
+        }
+        #escenaHalloween.llamaActiva .llamaPastel {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+            animation: titilarLlama .8s ease-in-out infinite alternate;
+        }
+
+        .resplandorVela {
+            position: absolute;
+            z-index: 4;
+            left: 50%;
+            bottom: calc(15% + clamp(125px, 22vh, 170px));
+            width: clamp(190px, 38vw, 360px);
+            aspect-ratio: 1;
+            transform: translate(-50%, 50%) scale(.2);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 188, 78, .5) 0%, rgba(255, 133, 39, .24) 22%, rgba(255, 113, 27, .08) 45%, transparent 70%);
+            filter: blur(5px);
+            opacity: 0;
+            z-index: 5;
+            pointer-events: none;
+        }
+        #escenaHalloween.llamaActiva .resplandorVela {
+            opacity: 1;
+            transform: translate(-50%, 50%) scale(1);
+            animation: respirarResplandor 2s ease-in-out infinite;
+        }
+
+        .calabazaHalloween {
+            position: absolute;
+            z-index: 3;
+            bottom: 13%;
+            width: clamp(38px, 7vw, 68px);
+            height: clamp(32px, 6vw, 57px);
+            border-radius: 48% 48% 42% 42%;
+            background: radial-gradient(ellipse at 50% 35%, #ffb347, #c34a12 75%);
+            box-shadow: inset 8px 0 0 rgba(80,25,10,.22), inset -8px 0 0 rgba(80,25,10,.2);
+        }
+        .calabazaHalloween::before {
+            content: "";
+            position: absolute;
+            left: 45%; top: -8px;
+            width: 9px; height: 12px;
+            border-radius: 3px;
+            background: #3c5b2d;
+            transform: rotate(10deg);
+        }
+        .calabazaHalloween::after {
+            content: "▲ ▾ ▲";
+            position: absolute;
+            left: 0; right: 0; top: 35%;
+            text-align: center;
+            color: #321324;
+            font-size: clamp(8px, 1.3vw, 12px);
+        }
+        .calabazaHalloween.izq { left: 7%; }
+        .calabazaHalloween.der { right: 7%; transform: scale(.82); }
+
+        .oscuridadHalloween {
+            position: absolute;
+            z-index: 10;
+            inset: 0;
+            background: #000;
+            opacity: 1;
+            transition: opacity 2s ease, background 2s ease;
+            pointer-events: none;
+        }
+        /* Al encender la vela, solo se abre un pequeño círculo de luz alrededor de la torta. */
+        #escenaHalloween.llamaActiva .oscuridadHalloween {
+            opacity: 1;
+            background: radial-gradient(ellipse 180px 190px at 50% 66%, transparent 0%, rgba(0,0,0,.16) 38%, rgba(0,0,0,.78) 74%, #000 120%);
+        }
+
+        .textoMusica {
+            position: absolute;
+            z-index: 12;
+            left: 50%;
+            bottom: 5%;
+            width: min(90%, 460px);
+            transform: translateX(-50%);
+            text-align: center;
+            color: rgba(255, 231, 193, .85);
+            font-size: clamp(.75rem, 2vw, .95rem);
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            text-shadow: 0 0 10px rgba(255, 170, 70, .4);
+        }
+        #escenaHalloween.llamaActiva .textoMusica { opacity: 1; }
+
+        @keyframes titilarLlama {
+            from { filter: drop-shadow(0 0 6px #ff9b2f); }
+            to { filter: drop-shadow(0 0 15px #ffd16b); }
+        }
+        @keyframes respirarResplandor {
+            0%, 100% { filter: blur(5px); opacity: .75; }
+            50% { filter: blur(9px); opacity: 1; }
+        }
+
+
+        /* =========================================
+           AMBIENTE DE FIESTA: DETALLES Y LUZ
+        ========================================= */
+        .haloAmbiente {
+            position:absolute; inset:-10%; z-index:1; pointer-events:none; opacity:0;
+            background:radial-gradient(ellipse at 50% 45%, rgba(255,132,53,.23), transparent 42%),
+                       radial-gradient(ellipse at 18% 35%, rgba(154,88,220,.24), transparent 35%),
+                       radial-gradient(ellipse at 82% 34%, rgba(255,153,66,.17), transparent 32%);
+            filter:blur(8px); transition:opacity 2s ease;
+        }
+        #escenaHalloween.lucesEncendidas .haloAmbiente { opacity:1; }
+        .letreroCumple {
+            position:absolute; z-index:2; top:19%; left:50%; transform:translateX(-50%);
+            width:max-content; max-width:72vw; padding:9px 22px 11px;
+            border:1px solid rgba(255,205,135,.7); border-radius:8px 8px 14px 14px;
+            color:#fff0d1; font:700 clamp(15px,2.4vw,27px)/1.2 Georgia,serif;
+            letter-spacing:1.5px; text-align:center; white-space:normal;
+            background:linear-gradient(180deg,rgba(83,34,88,.88),rgba(30,15,42,.9));
+            box-shadow:0 0 0 4px rgba(255,174,80,.06),0 0 24px rgba(255,145,58,.25),inset 0 0 15px rgba(255,206,136,.1);
+            opacity:.15; transition:opacity 1.4s ease, filter 1.4s ease;
+        }
+        .letreroCumple span { color:#ffc06a; padding-left:5px; }
+        #escenaHalloween.lucesEncendidas .letreroCumple { opacity:1; filter:drop-shadow(0 0 12px rgba(255,157,70,.4)); }
+        .lucesGuirnalda { position:absolute; z-index:3; top:calc(13% + 14px); left:7%; width:86%; display:flex; justify-content:space-around; }
+        .lucesGuirnalda i { width:clamp(7px,1vw,12px); height:clamp(10px,1.4vw,16px); border-radius:45% 45% 55% 55%; background:#ffb35e; opacity:.2; box-shadow:0 0 3px #ffb35e; transition:opacity 1s,box-shadow 1s; }
+        .lucesGuirnalda i:nth-child(3n) { background:#c9a0ff; box-shadow:0 0 3px #c9a0ff; }
+        .lucesGuirnalda i:nth-child(2n) { background:#ff7d65; box-shadow:0 0 3px #ff7d65; }
+        #escenaHalloween.lucesEncendidas .lucesGuirnalda i { opacity:1; box-shadow:0 0 8px currentColor,0 0 18px rgba(255,167,93,.7); animation:lucecita 1.8s ease-in-out infinite alternate; }
+        .telarana { position:absolute; z-index:1; top:0; width:clamp(70px,14vw,180px); height:clamp(70px,14vw,180px); opacity:.23; background:repeating-conic-gradient(from 0deg at 0 0,transparent 0deg 13deg,rgba(205,177,218,.55) 13.5deg 14deg,transparent 14.5deg 45deg); }
+        .telarana::before { content:""; position:absolute; inset:0; border-radius:0 0 100% 0; background:repeating-radial-gradient(circle at 0 0,transparent 0 16px,rgba(205,177,218,.5) 17px 18px,transparent 19px 27px); }
+        .telaranaIzq { left:0; }
+        .telaranaDer { right:0; transform:scaleX(-1); }
+        .regaloHalloween { position:absolute; z-index:2; bottom:18%; width:clamp(45px,7vw,82px); height:clamp(38px,6vw,68px); border-radius:4px; background:linear-gradient(135deg,#7e3b9c,#351744); box-shadow:inset -8px -5px 10px #170b20,0 10px 16px rgba(0,0,0,.35); }
+        .regaloHalloween::before { content:""; position:absolute; left:0; right:0; top:-5px; height:9px; border-radius:3px; background:#c28be6; }
+        .regaloHalloween::after { content:""; position:absolute; left:44%; top:-5px; width:12%; height:100%; background:#f4b8dc; }
+        .regaloHalloween span { position:absolute; left:33%; top:-17px; width:35%; height:15px; border:4px solid #f4b8dc; border-radius:50%; transform:rotate(-18deg); }
+        .regaloIzq { left:calc(50% - min(38vw,325px) - 52px); transform:rotate(-5deg); }
+        .regaloDer { right:calc(50% - min(38vw,325px) - 50px); bottom:20%; background:linear-gradient(135deg,#df742d,#8d321b); transform:rotate(5deg) scale(.78); }
+        .regaloDer::before { background:#ffc06a; } .regaloDer::after { background:#ffdda0; }
+        .regaloDer span { border-color:#ffdda0; }
+        .mesaHalloween { background:linear-gradient(180deg,#a45b3a 0%,#713727 22%,#351824 90%); border:1px solid rgba(255,190,132,.45); }
+        .mesaHalloween::before,.mesaHalloween::after { box-shadow:inset 4px 0 rgba(255,190,132,.06); }
+        .mantelHalloween { position:absolute; inset:0; border-radius:8px; background:linear-gradient(180deg,rgba(255,205,155,.25),transparent 55%); }
+        /* Torta por capas: crema, relleno, chispas y placa decorativa */
+        .tortaHalloween { height:clamp(118px,19vh,158px); width:clamp(168px,31vw,270px); border:0; border-radius:0; background:transparent; box-shadow:none; }
+        .tortaHalloween::before,.tortaHalloween::after { content:none; }
+        .baseTorta { position:absolute; bottom:0; left:-4%; width:108%; height:22px; border-radius:50%; background:linear-gradient(180deg,#f7c7df,#a65b9e 58%,#4a214d); box-shadow:0 8px 0 #281329,0 12px 14px rgba(0,0,0,.45); }
+        .pisoTorta { position:absolute; left:5%; width:90%; border:2px solid rgba(255,222,239,.45); background:linear-gradient(90deg,#532052,#8e3d82 18%,#bd70ac 46%,#77316f 78%,#3c193f); box-shadow:inset 0 7px 0 rgba(255,255,255,.13),inset 0 -9px 12px rgba(25,5,28,.35); }
+        .pisoInferior { bottom:12px; height:63px; border-radius:10px 10px 13px 13px; }
+        .pisoSuperior { bottom:68px; left:20%; width:60%; height:42px; border-radius:9px 9px 12px 12px; background:linear-gradient(90deg,#f1a8d0,#ffe0ee 20%,#d88ac4 60%,#8a438d); border-color:#ffd8ed; }
+        .pisoTorta::before { content:""; position:absolute; top:-8px; left:-2px; width:calc(100% + 4px); height:17px; border-radius:50%; background:linear-gradient(180deg,#fff0f5,#f0b5d8 70%,#c879b4); box-shadow:0 3px 5px rgba(0,0,0,.2); }
+        .pisoTorta i { position:absolute; top:26px; width:8px; height:8px; border-radius:50%; background:#ffd36b; box-shadow:0 0 7px rgba(255,203,93,.55); }
+        .pisoInferior i:nth-child(1) {left:12%}.pisoInferior i:nth-child(2){left:30%}.pisoInferior i:nth-child(3){left:49%}.pisoInferior i:nth-child(4){left:68%}.pisoInferior i:nth-child(5){left:86%}
+        .pisoSuperior i:nth-child(1){left:22%;top:19px;background:#6a2b72}.pisoSuperior i:nth-child(2){left:49%;top:19px;background:#6a2b72}.pisoSuperior i:nth-child(3){left:76%;top:19px;background:#6a2b72}
+        .glaseadoTorta { position:absolute; z-index:2; bottom:62px; left:19%; width:62%; height:12px; border-radius:50%; background:#f8d8ec; }
+        .glaseadoTorta::after { content:""; position:absolute; left:10%; top:5px; width:9px; height:17px; border-radius:0 0 8px 8px; background:#f8d8ec; box-shadow:30px 1px #f8d8ec,60px -1px #f8d8ec,90px 2px #f8d8ec; }
+        .adornoTorta { position:absolute; z-index:4; bottom:31px; left:0; width:100%; text-align:center; font-size:clamp(12px,1.7vw,18px); color:#ffe19a; text-shadow:0 0 7px rgba(255,190,84,.65); letter-spacing:5px; }
+        .adornoTorta span { font-size:clamp(13px,1.8vw,19px); letter-spacing:0; }
+        .placaTorta { position:absolute; z-index:4; bottom:13px; left:50%; transform:translateX(-50%); white-space:nowrap; padding:2px 8px; border:1px solid #f9d4a3; border-radius:4px; background:#51203f; color:#ffe4b5; font:700 clamp(6px,1vw,9px)/1.2 Georgia,serif; letter-spacing:1px; }
+        .sprinkles { position:absolute; z-index:3; top:18px; left:26%; width:48%; height:24px; background:repeating-linear-gradient(115deg,transparent 0 12px,#ffca72 13px 15px,transparent 16px 24px); opacity:.85; }
+        .sprinklesDos { top:83px; left:12%; width:76%; height:20px; background:repeating-linear-gradient(65deg,transparent 0 15px,#8be0d4 16px 18px,transparent 19px 29px); opacity:.7; }
+        .textoSorpresa { position:absolute; z-index:12; left:50%; bottom:5%; width:min(90%,460px); transform:translateX(-50%); text-align:center; color:rgba(255,231,193,.92); font-size:clamp(.75rem,2vw,.95rem); letter-spacing:1px; opacity:0; transition:opacity 1.5s ease; text-shadow:0 0 10px rgba(255,170,70,.4); }
+        #escenaHalloween.llamaActiva .textoSorpresa { opacity:1; }
+        .oscuridadHalloween { transition:opacity 2.5s ease,background 2.5s ease; }
+        #escenaHalloween.lucesEncendidas .oscuridadHalloween { opacity:0; background:transparent; }
+        #escenaHalloween.lucesEncendidas .paredHalloween { background:radial-gradient(ellipse at 50% 100%,rgba(255,155,87,.22),transparent 55%),linear-gradient(180deg,#21132c,#492343 72%,#69344a); }
+        #escenaHalloween.lucesEncendidas .lunaHalloween { opacity:.9; box-shadow:0 0 35px rgba(255,190,112,.45); }
+        #escenaHalloween.lucesEncendidas .globoHalloween { filter:brightness(1.22); }
+        #escenaHalloween.lucesEncendidas .calabazaHalloween { filter:drop-shadow(0 0 13px rgba(255,125,35,.5)); }
+        #escenaHalloween.lucesEncendidas .murcielago { animation:volarMurcielago 5s ease-in-out infinite alternate; }
+        @keyframes lucecita { from { filter:brightness(.8); } to { filter:brightness(1.4); } }
+        @keyframes volarMurcielago { from { translate:0 0; } to { translate:12px -8px; } }
+
+        /* Decoraciones extra: banderines, estrellas mágicas y niebla suave */
+        .banderinesHalloween {
+            position:absolute; z-index:2; top:7%; left:13%; width:74%; height:46px;
+            display:flex; justify-content:space-around; align-items:flex-start;
+            pointer-events:none; filter:drop-shadow(0 3px 4px rgba(0,0,0,.25));
+        }
+        .banderinesHalloween i {
+            display:block; width:clamp(13px,2.2vw,25px); height:clamp(20px,3.4vw,36px);
+            background:linear-gradient(145deg,#ffb65e,#d95c35);
+            clip-path:polygon(0 0,100% 0,100% 68%,50% 100%,0 68%);
+            opacity:.72; transform:rotate(var(--giro,0deg));
+        }
+        .banderinesHalloween i:nth-child(3n) { background:linear-gradient(145deg,#d8b7ff,#7548a7); }
+        .banderinesHalloween i:nth-child(2n) { background:linear-gradient(145deg,#ffe4a6,#b96b38); }
+        .estrellaColgante {
+            position:absolute; z-index:2; top:0; width:1px; height:clamp(55px,10vh,105px);
+            background:linear-gradient(to bottom,rgba(255,207,139,.65),rgba(255,207,139,.08));
+            pointer-events:none; opacity:.65;
+        }
+        .estrellaColgante::after {
+            content:'✦'; position:absolute; left:50%; bottom:-14px; transform:translateX(-50%);
+            color:#ffd78d; font-size:clamp(17px,2.5vw,27px);
+            text-shadow:0 0 7px #ffb65e,0 0 17px rgba(255,174,78,.8);
+            animation:brillarEstrella 2.4s ease-in-out infinite alternate;
+        }
+        .estrellaColgante.estrellaA { left:27%; height:76px; }
+        .estrellaColgante.estrellaB { right:27%; height:95px; }
+        .estrellaColgante.estrellaC { left:74%; height:58px; }
+        .polvitoMagico {
+            position:absolute; z-index:2; width:5px; height:5px; border-radius:50%;
+            background:#ffd99a; box-shadow:0 0 7px #ffbd68,0 0 15px rgba(255,176,90,.75);
+            opacity:.0; pointer-events:none;
+        }
+        #escenaHalloween.lucesEncendidas .polvitoMagico { opacity:.85; animation:flotarPolvito 4.5s ease-in-out infinite alternate; }
+        .polvitoMagico.p1 { left:15%; top:52%; animation-delay:-1s; }
+        .polvitoMagico.p2 { left:31%; top:39%; animation-delay:-2.5s; }
+        .polvitoMagico.p3 { right:16%; top:55%; animation-delay:-.8s; }
+        .polvitoMagico.p4 { right:32%; top:43%; animation-delay:-3s; }
+        .polvitoMagico.p5 { left:8%; top:67%; animation-delay:-1.8s; }
+        .nieblaHalloween {
+            position:absolute; z-index:1; left:-15%; bottom:12%; width:130%; height:18%;
+            background:radial-gradient(ellipse at 20% 50%,rgba(184,139,220,.16),transparent 48%),
+                       radial-gradient(ellipse at 70% 45%,rgba(255,167,108,.12),transparent 50%);
+            filter:blur(15px); opacity:.45; pointer-events:none;
+            animation:deslizarNiebla 12s ease-in-out infinite alternate;
+        }
+        @keyframes brillarEstrella { from { opacity:.55; transform:translateX(-50%) scale(.8) rotate(-8deg); } to { opacity:1; transform:translateX(-50%) scale(1.12) rotate(8deg); } }
+        @keyframes flotarPolvito { from { transform:translate3d(0,0,0) scale(.7); } to { transform:translate3d(10px,-18px,0) scale(1.25); } }
+        @keyframes deslizarNiebla { from { transform:translateX(-3%); } to { transform:translateX(3%); } }
+        #escenaHalloween.lucesEncendidas .estrellaColgante { opacity:1; }
+        @media (prefers-reduced-motion: reduce) {
+            .estrellaColgante::after, .nieblaHalloween, #escenaHalloween.lucesEncendidas .polvitoMagico { animation:none; }
+        }
+
+        @media (max-width:600px) {
+            .letreroCumple { top:17%; padding:8px 12px; letter-spacing:.5px; }
+            .globoHalloween.izq { left:5%; top:27%; }
+            .globoHalloween.der { right:5%; top:27%; }
+            .regaloIzq { left:3%; bottom:18%; }
+            .regaloDer { right:3%; bottom:19%; }
+            .mesaHalloween { width:84vw; }
+            .tortaHalloween { width:clamp(158px,48vw,220px); height:clamp(112px,17vh,138px); }
+            .pisoInferior { height:55px; }
+            .pisoSuperior { bottom:60px; height:37px; }
+            .glaseadoTorta { bottom:55px; }
+            .adornoTorta { bottom:27px; }
+            .placaTorta { bottom:11px; }
+            .sprinklesDos { top:73px; }
+        }
+        @media (max-height:520px) {
+            .letreroCumple { top:12%; }
+            .tortaHalloween { bottom:calc(15% + 12px); height:100px; }
+            .pisoInferior { height:43px; }
+            .pisoSuperior { bottom:48px; height:30px; }
+            .glaseadoTorta { bottom:44px; }
+            .adornoTorta { bottom:21px; }
+            .placaTorta { bottom:8px; }
+            .sprinklesDos { top:58px; }
+        }
+
+        /* =========================================
+           CELULAR
+        ========================================= */
+
+        @media (max-width: 600px) {
+            #escenaNeytiri {
+                align-items: center;
+                padding: 14px;
+            }
+
+            .contenedorNeytiri {
+                width: min(100%, 420px);
+            }
+
+            .zonaNeytiri {
+                height: clamp(160px, 31svh, 245px);
+            }
+
+            #imagenNeytiri {
+                max-width: min(72vw, 230px);
+            }
+
+            .dialogo {
+                min-height: 96px;
+                padding: 17px;
+                font-size: 1rem;
+            }
+
+            #botonContinuar {
+                margin-top: 16px;
+                padding: 12px 30px;
+                max-width: 100%;
+            }
+        }
+
+        /* Pantallas bajas: evita que el personaje y el botón se amontonen. */
+        @media (max-height: 650px) {
+            #escenaNeytiri {
+                align-items: flex-start;
+            }
+
+            .contenedorNeytiri {
+                margin: auto;
+            }
+
+            .zonaNeytiri {
+                height: clamp(125px, 27svh, 190px);
+            }
+
+            .dialogo {
+                min-height: 76px;
+                padding: 13px 16px;
+            }
+
+            #botonContinuar {
+                margin-top: 12px;
+                padding: 10px 26px;
+            }
+        }
+
+        /* Monitores grandes: mantiene el contenido centrado y legible. */
+        @media (min-width: 1200px) {
+            .contenedorNeytiri {
+                width: min(90vw, 500px);
+            }
+
+            #imagenNeytiri {
+                max-width: 300px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+
+        /* Título de preparación y cuenta regresiva antes de la música. */
+        .tituloPreCancion {
+            position:absolute; z-index:22; left:50%; top:40%; width:92%;
+            transform:translate(-50%,-50%) scale(.92); text-align:center;
+            color:#fff4c8; font:700 clamp(2.4rem,9vw,5rem)/1.1 Georgia,serif;
+            letter-spacing:.08em; opacity:0; visibility:hidden;
+            text-shadow:0 0 8px #fff,0 0 20px #ffcf75,0 0 42px #ff8b3d,0 0 72px #d85bff;
+            transition:opacity .45s ease, transform .45s ease, visibility .45s ease;
+            pointer-events:none;
+        }
+        .tituloPreCancion.activo { opacity:1; visibility:visible; transform:translate(-50%,-50%) scale(1); }
+        .letraCumple {
+            position:absolute; z-index:18; left:50%; bottom:calc(15% + clamp(190px,31vh,245px));
+            width:min(94%,700px); transform:translateX(-50%); display:flex; flex-direction:column;
+            align-items:center; gap:5px; text-align:center; pointer-events:none;
+            color:#fff4d6; font:700 clamp(1rem,3.5vw,1.8rem)/1.2 Georgia,serif;
+            letter-spacing:.025em; text-shadow:0 0 5px #fff,0 0 12px #ffdb8b,0 0 26px #ff9a45,0 0 42px #db5dff;
+            opacity:0; visibility:hidden; transition:opacity 1.8s ease, visibility 1.8s ease;
+        }
+        .letraCumple.visible { opacity:1; visibility:visible; }
+        .letraCumple.desvanecer { opacity:0; visibility:hidden; }
+        .letraCumple span { opacity:0; transform:translateY(8px); animation:aparecerLetra .7s ease forwards; }
+        @keyframes aparecerLetra { to { opacity:1; transform:translateY(0); } }
+        @media (max-width:600px) {
+            .tituloPreCancion { top:38%; }
+            .letraCumple { bottom:calc(15% + clamp(170px,29vh,220px)); gap:4px; }
+        }
+
+        /* Controles de la secuencia de cumpleaños; no altera los elementos existentes. */
+        /* Confeti en capas: naranja, violeta y turquesa, con caída suave */
+        .confetiCumple { position:absolute; inset:0; z-index:8; overflow:hidden; pointer-events:none; opacity:0; transition:opacity 1.2s ease; }
+        #escenaHalloween.confetiActivo .confetiCumple { opacity:1; }
+        .piezaConfeti { position:absolute; top:-12vh; left:var(--x); width:var(--w); height:var(--h); background:var(--color); border-radius:var(--forma); opacity:var(--opacidad); box-shadow:0 0 5px var(--color); animation:caerConfeti var(--duracion) linear var(--retraso) infinite; will-change:transform; }
+        .piezaConfeti.capaFondo { filter:blur(.7px); }
+        .piezaConfeti.capaFrente { box-shadow:0 0 8px var(--color); }
+        @keyframes caerConfeti { 0% { transform:translate3d(0,-12vh,0) rotate(0deg); } 25% { transform:translate3d(var(--balanceo),25vh,0) rotate(180deg); } 50% { transform:translate3d(calc(var(--balanceo) * -0.6),52vh,0) rotate(360deg); } 75% { transform:translate3d(var(--balanceo),78vh,0) rotate(540deg); } 100% { transform:translate3d(0,112vh,0) rotate(720deg); } }
+        /* Revelado progresivo de las luces, sin cambiar el diseño original. */
+        .paredHalloween { transition:background 4.8s ease 1.1s; }
+        .haloAmbiente { transition:opacity 3.8s ease 1.4s; }
+        .letreroCumple { transition:opacity 2.4s ease 1.7s, filter 2.4s ease 1.7s; }
+        .lucesGuirnalda i { transition:opacity 1.8s ease calc(1.5s + var(--paso, 0) * .22s), box-shadow 2s ease calc(1.5s + var(--paso, 0) * .22s); }
+        .lucesGuirnalda i:nth-child(1) { --paso:0; } .lucesGuirnalda i:nth-child(2) { --paso:1; } .lucesGuirnalda i:nth-child(3) { --paso:2; }
+        .lucesGuirnalda i:nth-child(4) { --paso:3; } .lucesGuirnalda i:nth-child(5) { --paso:4; } .lucesGuirnalda i:nth-child(6) { --paso:5; }
+        .lucesGuirnalda i:nth-child(7) { --paso:6; } .lucesGuirnalda i:nth-child(8) { --paso:7; } .lucesGuirnalda i:nth-child(9) { --paso:8; }
+        #escenaHalloween.lucesEncendidas .lunaHalloween { transition:opacity 3.4s ease 1.2s, box-shadow 3.4s ease 1.2s; }
+        #escenaHalloween.lucesEncendidas .globoHalloween, #escenaHalloween.lucesEncendidas .calabazaHalloween { transition:filter 3s ease 2s; }
+        @media (prefers-reduced-motion: reduce) { .piezaConfeti { animation-duration:24s !important; } }
+
+        .panelSecuenciaCumple {
+            position:absolute; z-index:30; left:50%; top:72%; transform:translate(-50%,-50%);
+            width:min(88%,420px); padding:18px 20px; border:1px solid rgba(255,205,135,.65);
+            border-radius:16px; background:rgba(24,12,31,.94); color:#fff0d1; text-align:center;
+            box-shadow:0 0 24px rgba(255,145,58,.2); font:clamp(16px,2.5vw,21px)/1.4 Georgia,serif;
+            opacity:1; transition:opacity .9s ease, transform .9s ease;
+        }
+        .panelSecuenciaCumple[hidden] { display:none; }
+        .panelSecuenciaCumple.mensajeSaliendo { opacity:0 !important; transform:translate(-50%,-44%); pointer-events:none; }
+        .panelSecuenciaCumple.mensajeEntrando { opacity:0; transform:translate(-50%,-44%); }
+        .panelSecuenciaCumple.mensajeVisible { opacity:1; transform:translate(-50%,-50%); }
+        .panelSecuenciaCumple p { margin:0 0 14px; }
+        .panelSecuenciaCumple button {
+            border:1px solid #ffd18a; border-radius:999px; padding:9px 22px; margin:4px;
+            color:#2b1730; background:linear-gradient(180deg,#ffe4ad,#f4b96d); font:600 15px Arial,sans-serif;
+            cursor:pointer;
+        }
+        .panelSecuenciaCumple button:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+
+        /* Aparición sorpresa de Neytiri después de que el ambiente termine de iluminarse. */
+        #neytiriSorpresaImagen {
+            position:absolute; z-index:24; left:50%; top:29%;
+            width:min(42vw, 230px); max-height:37vh; height:auto; object-fit:contain;
+            opacity:0; visibility:hidden; pointer-events:none;
+            transform:translate(-50%, 22px) scale(.86);
+            filter:drop-shadow(0 0 18px rgba(95,225,255,.42));
+            transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1), visibility .8s ease;
+        }
+        #escenaHalloween.neytiriSorpresa #neytiriSorpresaImagen {
+            opacity:1; visibility:visible; transform:translate(-50%, 0) scale(1);
+            animation:flotarNeytiriSorpresa 3s ease-in-out 0.8s infinite;
+        }
+        #escenaHalloween.sorpresaTerminada #neytiriSorpresaImagen {
+            opacity:0; visibility:hidden; transform:translate(-50%, 12px) scale(.92); animation:none;
+        }
+        #escenaHalloween.neytiriSorpresa.transicionNeytiri #neytiriSorpresaImagen {
+            opacity:0; transform:translate(-50%, 22px) scale(.86); animation:none;
+        }
+        @keyframes flotarNeytiriSorpresa {
+            0%,100% { margin-top:0; }
+            50% { margin-top:-8px; }
+        }
+        @media (max-width:600px) {
+            #neytiriSorpresaImagen { top:27%; width:min(45vw,190px); max-height:32vh; }
+            .panelSecuenciaCumple { top:72%; padding:14px 15px; }
+        }
+        #escenaHalloween.velaApagada .llamaPastel { opacity:0; animation:none; transform:translateX(-50%) scale(.2); }
+        #escenaHalloween.velaApagada .resplandorVela { opacity:0; animation:none; }
+
+
+
+
+        /* =========================================
+           REGALITO ESPECIAL + CARTA
+        ========================================== */
+        #regaloEspecial {
+            position:absolute; z-index:28; left:calc(50% + clamp(145px, 17vw, 250px)); bottom:15%;
+            width:clamp(110px, 14vw, 165px); display:flex; flex-direction:column; align-items:center;
+            opacity:0; visibility:hidden; transform:translateY(28px) scale(.88);
+            transition:opacity .9s ease, transform .9s ease, visibility .9s ease;
+            pointer-events:none;
+        }
+        #regaloEspecial.regaloEspecialVisible {
+            opacity:1; visibility:visible; transform:translateY(0) scale(1); pointer-events:auto;
+        }
+        .regaloEspecialCaja {
+            position:relative; width:clamp(82px, 10vw, 118px); height:clamp(62px, 8vw, 88px);
+            border-radius:8px; background:linear-gradient(135deg,#7d3fb2,#351744 80%);
+            box-shadow:0 14px 25px rgba(0,0,0,.42),0 0 22px rgba(214,130,255,.28);
+            animation:flotarRegaloEspecial 2.8s ease-in-out infinite;
+        }
+        .regaloEspecialTapa {
+            position:absolute; left:-6%; top:-13%; width:112%; height:24%; border-radius:7px;
+            background:linear-gradient(180deg,#b66be5,#7040a0);
+            box-shadow:0 5px 9px rgba(0,0,0,.28);
+        }
+        .regaloEspecialCintaVertical {
+            position:absolute; left:42%; top:0; width:16%; height:100%;
+            background:#f6b8df; box-shadow:0 0 8px rgba(255,210,240,.25);
+        }
+        .regaloEspecialCintaHorizontal {
+            position:absolute; left:0; top:38%; width:100%; height:15%;
+            background:#f6b8df;
+        }
+        .regaloEspecialMoño {
+            position:absolute; left:50%; top:-25%; width:28px; height:22px; transform:translateX(-50%);
+        }
+        .regaloEspecialMoño::before,.regaloEspecialMoño::after {
+            content:""; position:absolute; top:0; width:24px; height:16px; border:5px solid #f6b8df;
+            border-radius:70% 30% 70% 30%;
+        }
+        .regaloEspecialMoño::before { right:9px; transform:rotate(28deg); }
+        .regaloEspecialMoño::after { left:9px; transform:scaleX(-1) rotate(28deg); }
+        .regaloEspecialBrillo {
+            position:absolute; right:-20px; top:-23px; color:#ffe8a9; font-size:24px;
+            text-shadow:0 0 12px #fff0a8; animation:brilloRegalo 1.6s ease-in-out infinite alternate;
+        }
+        .regaloEspecialEtiqueta {
+            margin-top:10px; color:#fff1ce; font:700 14px Arial,sans-serif;
+            text-shadow:0 2px 10px #000,0 0 8px rgba(255,180,220,.55);
+        }
+        #botonAbrirRegalo {
+            margin-top:8px; border:1px solid #ffd18a; border-radius:999px; padding:9px 15px;
+            color:#24122e; background:linear-gradient(180deg,#ffe4ad,#f4b96d);
+            font:700 13px Arial,sans-serif; cursor:pointer; box-shadow:0 7px 15px rgba(0,0,0,.28);
+        }
+        #botonAbrirRegalo:hover { transform:translateY(-2px); filter:brightness(1.08); }
+
+        @keyframes flotarRegaloEspecial { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-7px) rotate(1deg)} }
+        @keyframes brilloRegalo { from{opacity:.45;transform:scale(.8) rotate(-10deg)} to{opacity:1;transform:scale(1.15) rotate(10deg)} }
+
+        .overlayCartaRegalo {
+            position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center;
+            padding:22px; background:rgba(4,2,10,.76); backdrop-filter:blur(7px);
+            opacity:0; visibility:hidden; pointer-events:none; transition:opacity .55s ease,visibility .55s ease;
+        }
+        .overlayCartaRegalo.visible { opacity:1; visibility:visible; pointer-events:auto; }
+        .cartaRegalo {
+            position:relative; width:min(92vw,760px); max-height:min(86vh,820px); overflow:auto;
+            padding:34px clamp(22px,5vw,52px) 30px; border-radius:22px;
+            background:linear-gradient(145deg,#fff9e9,#f7e9c8);
+            color:#3b2344; box-shadow:0 22px 70px rgba(0,0,0,.58),0 0 35px rgba(255,203,137,.3);
+            border:2px solid rgba(255,209,138,.8); transform:translateY(25px) scale(.94);
+            transition:transform .55s ease;
+        }
+        .overlayCartaRegalo.visible .cartaRegalo { transform:translateY(0) scale(1); }
+        .cerrarCartaRegalo {
+            position:absolute; right:12px; top:9px; width:36px; height:36px; border:0; border-radius:50%;
+            background:rgba(59,35,68,.1); color:#3b2344; font-size:27px; cursor:pointer;
+        }
+        .selloCarta { text-align:center; font-size:38px; margin-bottom:3px; }
+        .saludoCarta { margin:0 0 6px; text-align:center; font:700 18px Georgia,serif; color:#744b82; }
+        #tituloCartaRegalo { margin:0 0 18px; text-align:center; font:700 clamp(1.35rem,3vw,2rem) Georgia,serif; }
+        .textoCartaRegalo { font:18px/1.65 Georgia,serif; }
+        .textoCartaRegalo p { margin:0 0 14px; }
+        .firmaCarta { text-align:right; color:#6f4a77; }
+        .zonaCodigoRegalo {
+            margin-top:22px; padding:18px; border-radius:17px; background:rgba(126,59,156,.09);
+            border:1px dashed rgba(126,59,156,.4); text-align:center;
+        }
+        .zonaCodigoRegalo > p:first-child { margin:0 0 8px; font:700 15px Arial,sans-serif; }
+        .codigoRegalo {
+            display:inline-block; padding:10px 16px; border-radius:10px; background:#fff;
+            border:1px solid rgba(126,59,156,.35); font:800 18px/1.2 "Courier New",monospace;
+            letter-spacing:1px; color:#51245f; user-select:all;
+        }
+        .accionesRegalo { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:13px; }
+        .accionesRegalo button {
+            border:0; border-radius:999px; padding:11px 17px; cursor:pointer; font:700 14px Arial,sans-serif;
+            background:#5f3273; color:#fff; box-shadow:0 6px 14px rgba(0,0,0,.18);
+        }
+        .accionesRegalo button:hover { transform:translateY(-1px); filter:brightness(1.08); }
+        .estadoCodigoRegalo { min-height:20px; margin:8px 0 0; color:#744b82; font:600 13px Arial,sans-serif; }
+        @media(max-width:800px){
+            #regaloEspecial { left:auto; right:5%; bottom:12%; }
+        }
+        @media(max-width:600px){
+            #regaloEspecial { right:4%; bottom:11%; width:112px; }
+            .regaloEspecialCaja { width:78px; height:60px; }
+            .textoCartaRegalo { font-size:16px; line-height:1.55; }
+            .cartaRegalo { padding:30px 18px 24px; }
+        }
+
+        /* Oscurecimiento de salida de Capi antes de volver a Halloween. */
+        #escenaCapi.capiSaliendo .cortinaCapi {
+            opacity:1 !important; transition:opacity 2.2s ease;
+        }
+        #escenaCapi.capiSaliendo .lucesFiestaCapi,
+        #escenaCapi.capiSaliendo .decoracionHalloweenCapi,
+        #escenaCapi.capiSaliendo #serpentinasCapi,
+        #escenaCapi.capiSaliendo .etiquetaCapi {
+            opacity:0 !important; transition:opacity 1.2s ease;
+        }
+
+        /* =========================================
+           NUEVA ESCENA: CAPI DJ (fondo y stickers se integran después)
+        ========================================== */
+        #escenaCapi {
+            position:fixed; inset:0; z-index:500; overflow:hidden; visibility:hidden; opacity:0;
+            background-color:#100b20;
+            /* Cuando tengas tu fondo, colócalo en imagenes/fondo-capi-dj.jpg */
+            background-image:linear-gradient(180deg,rgba(12,5,26,.10),rgba(8,3,18,.22)),url('./imagenes/fondo-capi-dj.jpg');
+            background-size:cover; background-position:center; background-repeat:no-repeat;
+            transition:opacity 1.2s ease, visibility 1.2s ease; isolation:isolate;
+        }
+        #escenaCapi.visible { visibility:visible; opacity:1; }
+        /* La cortina se abre por etapas para simular el encendido progresivo de la cabina. */
+        #escenaCapi .cortinaCapi { position:absolute; inset:0; z-index:50; background:#000; opacity:1; pointer-events:none; transition:opacity 1.8s ease; }
+        #escenaCapi.luzEtapa1 .cortinaCapi { opacity:.78; }
+        #escenaCapi.luzEtapa2 .cortinaCapi { opacity:.42; }
+        #escenaCapi.lucesCapi .cortinaCapi { opacity:0; }
+        #escenaCapi::before { content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0; transition:opacity 2.5s ease;
+            background:radial-gradient(ellipse at 18% 8%,rgba(255,90,30,.34),transparent 32%),radial-gradient(ellipse at 82% 9%,rgba(168,85,247,.36),transparent 34%),radial-gradient(ellipse at 50% 0%,rgba(52,211,235,.2),transparent 42%); }
+        #escenaCapi.lucesCapi::before { opacity:1; animation:lucesDjPulso 4s ease-in-out infinite alternate; }
+        @keyframes lucesDjPulso { from{filter:hue-rotate(0deg);opacity:.65} to{filter:hue-rotate(45deg);opacity:1} }
+        .decoracionHalloweenCapi { position:absolute; z-index:8; inset:0; pointer-events:none; opacity:0; transition:opacity 2s ease; }
+        #escenaCapi.lucesCapi .decoracionHalloweenCapi { opacity:1; }
+        .adornoCapi { position:absolute; filter:drop-shadow(0 0 10px rgba(255,140,40,.5)); font-size:clamp(25px,4vw,48px); animation:flotarAdornoCapi 4s ease-in-out infinite alternate; }
+        .adornoCapi.a1{left:4%;top:10%}.adornoCapi.a2{right:5%;top:13%;animation-delay:.6s}.adornoCapi.a3{left:10%;bottom:12%;animation-delay:1s}.adornoCapi.a4{right:9%;bottom:11%;animation-delay:1.4s}.adornoCapi.a5{left:48%;top:5%;font-size:clamp(20px,3vw,34px);animation-delay:.3s}.adornoCapi.a6{left:25%;top:20%;font-size:clamp(18px,2.5vw,30px);animation-delay:1.2s}.adornoCapi.a7{right:25%;top:23%;font-size:clamp(18px,2.5vw,30px);animation-delay:.9s}
+        @keyframes flotarAdornoCapi { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-10px) rotate(5deg)} }
+        /* Ambiente de discoteca: haces de luz que se mueven por toda la sala */
+        .lucesFiestaCapi { position:absolute; inset:0; z-index:4; overflow:hidden; pointer-events:none; opacity:0; transition:opacity 1.5s ease; }
+        #escenaCapi.lucesCapi .lucesFiestaCapi { opacity:1; }
+        .hazCapi { position:absolute; top:-28%; width:clamp(100px,18vw,240px); height:145%; transform-origin:top center; filter:blur(13px); mix-blend-mode:screen; opacity:.55; }
+        .hazUno { left:12%; background:linear-gradient(180deg,rgba(255,105,45,.0),rgba(255,105,45,.5) 25%,rgba(255,105,45,.08) 72%,transparent); clip-path:polygon(35% 0,65% 0,100% 100%,0 100%); animation:barridoHazUno 6s ease-in-out infinite alternate; }
+        .hazDos { right:12%; background:linear-gradient(180deg,rgba(190,90,255,0),rgba(190,90,255,.52) 25%,rgba(190,90,255,.08) 72%,transparent); clip-path:polygon(35% 0,65% 0,100% 100%,0 100%); animation:barridoHazDos 7s ease-in-out infinite alternate; }
+        .hazTres { left:42%; background:linear-gradient(180deg,rgba(50,220,240,0),rgba(50,220,240,.35) 30%,rgba(50,220,240,.05) 75%,transparent); clip-path:polygon(42% 0,58% 0,100% 100%,0 100%); animation:barridoHazTres 5s ease-in-out infinite alternate; }
+        .destelloCapi { position:absolute; width:clamp(160px,28vw,360px); aspect-ratio:1; border-radius:50%; filter:blur(30px); opacity:.32; animation:pulsoDestelloCapi 2.8s ease-in-out infinite alternate; }
+        .destelloUno { left:-8%; top:15%; background:rgba(255,95,35,.55); }
+        .destelloDos { right:-8%; top:18%; background:rgba(137,65,255,.6); animation-delay:-1.4s; }
+        @keyframes barridoHazUno { from { transform:rotate(-28deg); } to { transform:rotate(25deg); } }
+        @keyframes barridoHazDos { from { transform:rotate(25deg); } to { transform:rotate(-28deg); } }
+        @keyframes barridoHazTres { from { transform:rotate(18deg); } to { transform:rotate(-20deg); } }
+        @keyframes pulsoDestelloCapi { from { opacity:.18; transform:scale(.8); } to { opacity:.48; transform:scale(1.15); } }
+
+        /* Serpentinas ligeras, con giro y caída natural */
+        #serpentinasCapi { position:absolute; inset:0; z-index:18; overflow:hidden; pointer-events:none; }
+        .serpentinaCapi { position:absolute; top:-35px; width:clamp(5px,.7vw,9px); height:clamp(34px,5vw,62px); border-radius:50%; opacity:0; transform-origin:top center; animation:caerSerpentinaCapi var(--duracion-serp) linear forwards; filter:drop-shadow(0 0 4px currentColor); }
+        @keyframes caerSerpentinaCapi { 0% { opacity:0; transform:translate3d(0,-5vh,0) rotate(0deg) scaleY(.7); } 10% { opacity:1; } 70% { opacity:.95; } 100% { opacity:0; transform:translate3d(var(--deriva-serp),110vh,0) rotate(var(--giro-serp)) scaleY(1.1); } }
+        #escenaCapi.capiSaliendo .lucesFiestaCapi { opacity:0; }
+        @media (prefers-reduced-motion: reduce) { .hazCapi,.destelloCapi { animation:none !important; } .serpentinaCapi { animation-duration:1ms !important; } }
+
+        #panelDialogoCapi { position:absolute; z-index:30; left:50%; top:72%; transform:translateX(-50%); width:min(90%,760px); padding:0; border:none; border-radius:0; color:#fff8ed; text-align:center; background:transparent; box-shadow:none; backdrop-filter:none; opacity:0; visibility:hidden; transition:opacity .8s ease,transform .8s ease,visibility .8s ease; }
+        /* Sticker de Capi: uno diferente en cada diálogo */
+        .zonaStickerCapi { position:absolute; z-index:20; left:50%; top:12%; transform:translateX(-50%); width:min(45vw,380px); height:55vh; display:flex; justify-content:center; align-items:center; pointer-events:none; }
+        #imagenCapi { max-width:100%; max-height:100%; object-fit:contain; filter:drop-shadow(0 0 18px rgba(255,140,50,.35)); animation:flotarCapi 3s ease-in-out infinite; display:block; }
+        .zonaStickerCapi.stickerFaltante { border:2px dashed rgba(255,209,138,.85); border-radius:22px; background:rgba(20,8,30,.42); box-shadow:0 0 25px rgba(255,123,48,.18); }
+        .zonaStickerCapi.stickerFaltante::after { content:attr(data-sticker-faltante); color:#ffe8bd; font:700 14px Arial,sans-serif; text-align:center; padding:12px; text-shadow:0 2px 8px #000; }
+        .zonaStickerCapi.stickerFaltante #imagenCapi { display:none; }
+        @keyframes flotarCapi { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+        @media(max-width:600px){ .zonaStickerCapi{top:10%;width:min(70vw,320px);height:48vh;} }
+        #escenaCapi.capiDialogoActivo #panelDialogoCapi { opacity:1; visibility:visible; transform:translate(-50%,-4px); }
+        #mensajeCapi { margin:0 0 12px; font:600 clamp(1rem,2.2vw,1.35rem)/1.5 Arial,sans-serif; text-shadow:0 2px 12px rgba(0,0,0,.65); }
+        #accionesCapi button { border:1px solid #ffd18a; border-radius:999px; padding:10px 22px; margin:4px; color:#24122e; background:linear-gradient(180deg,#ffe4ad,#f4b96d); font:700 15px Arial,sans-serif; cursor:pointer; }
+        #accionesCapi button:hover { transform:translateY(-1px); filter:brightness(1.08); }
+        #accionesCapi button:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+        #escenaCapi .etiquetaCapi { position:absolute; z-index:12; top:5%; left:50%; transform:translateX(-50%); width:90%; text-align:center; color:#fff1ce; font:bold clamp(1.2rem,4vw,2.6rem)/1.1 Arial,sans-serif; letter-spacing:clamp(2px,.7vw,7px); text-shadow:0 0 12px #ff7b30,0 0 28px #9b4dff; opacity:0; transition:opacity 1.8s ease; }
+        #escenaCapi.lucesCapi .etiquetaCapi { opacity:1; }
+        @media(max-width:600px){#panelDialogoCapi{top:64%;width:91%}.adornoCapi.a5{top:11%}}
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         PANTALLA DE CARGA
+    ========================================== -->
+
+    <section id="pantallaCarga">
+
+
+        <!-- LUCES BIOLUMINISCENTES -->
+
+        <div
+            class="luzPandora"
+            style="left: 12%; top: 20%; animation-delay: 0s;">
+        </div>
+
+        <div
+            class="luzPandora violeta"
+            style="left: 24%; top: 65%; animation-delay: 1s;">
+        </div>
+
+        <div
+            class="luzPandora"
+            style="left: 78%; top: 25%; animation-delay: 0.5s;">
+        </div>
+
+        <div
+            class="luzPandora violeta"
+            style="left: 88%; top: 63%; animation-delay: 1.7s;">
+        </div>
+
+        <div
+            class="luzPandora"
+            style="left: 68%; top: 76%; animation-delay: 2s;">
+        </div>
+
+
+        <!-- VEGETACIÓN -->
+
+        <div class="vegetacion">
+
+            <div class="planta"></div>
+            <div class="planta"></div>
+            <div class="planta"></div>
+            <div class="planta"></div>
+            <div class="planta"></div>
+            <div class="planta"></div>
+            <div class="planta"></div>
+
+        </div>
+
+
+        <!-- CONTENIDO -->
+
+        <div class="contenidoCarga">
+
+            <h1 class="tituloCarga">
+                Feliz cumpleaños
+            </h1>
+
+
+            <p class="textoCarga">
+                Preparando una pequeña sorpresa...
+            </p>
+
+
+            <div class="barraCarga">
+
+                <div class="progreso"></div>
+
+            </div>
+
+
+            <p class="estadoCarga">
+                Entrando a Pandora...
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         ESCENA DE NEYTIRI
+         Fondo: coloca tu imagen en imagenes/fondo.png
+         (o cambia la ruta en el CSS).
+    ========================================== -->
+
+    <main id="escenaNeytiri">
+
+        <div class="contenedorNeytiri">
+
+            <div class="zonaNeytiri">
+                <img
+                    id="imagenNeytiri"
+                    src="stickers/Neytiri_01.png"
+                    alt="Neytiri">
+
+            </div>
+
+
+            <div class="nombreNeytiri">
+                Neytiri
+            </div>
+
+
+            <div class="dialogo">
+
+                <p id="textoDialogo"></p>
+
+            </div>
+
+
+            <button id="botonContinuar">
+                OK 💙
+            </button>
+
+
+        </div>
+
+        </main>
+
+
+        <!-- =========================================
+             ESCENA HALLOWEEN: TORTA Y VELA EN EL AMBIENTE
+             Por ahora, solo se iluminará la vela.
+        ========================================== -->
+        <section id="escenaHalloween" aria-label="Sorpresa de cumpleaños de Halloween">
+            <div class="paredHalloween"></div>
+            <div class="haloAmbiente"></div>
+            <div class="lunaHalloween"></div>
+            <div class="letreroCumple"><span>✦</span>¡¡¡FELIZ CUMPLEAÑOS!!!<span>✦</span></div>
+            <div class="guirnaldaHalloween"></div>
+            <div class="banderinesHalloween" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="estrellaColgante estrellaA" aria-hidden="true"></div>
+            <div class="estrellaColgante estrellaB" aria-hidden="true"></div>
+            <div class="estrellaColgante estrellaC" aria-hidden="true"></div>
+            <div class="polvitoMagico p1" aria-hidden="true"></div>
+            <div class="polvitoMagico p2" aria-hidden="true"></div>
+            <div class="polvitoMagico p3" aria-hidden="true"></div>
+            <div class="polvitoMagico p4" aria-hidden="true"></div>
+            <div class="polvitoMagico p5" aria-hidden="true"></div>
+            <div class="nieblaHalloween" aria-hidden="true"></div>
+            <div class="lucesGuirnalda" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="telarana telaranaIzq"></div>
+            <div class="telarana telaranaDer"></div>
+            <div class="murcielago uno"></div>
+            <div class="murcielago dos"></div>
+            <div class="murcielago tres"></div>
+            <div class="fantasmaHalloween uno"></div>
+            <div class="fantasmaHalloween dos"></div>
+            <div class="globoHalloween izq"></div>
+            <div class="globoHalloween der"></div>
+            <div class="sueloHalloween"></div>
+            <div class="regaloHalloween regaloIzq"><span></span></div>
+            <div class="regaloHalloween regaloDer"><span></span></div>
+
+            <!-- REGALITO ESPECIAL DE NIKY: aparece después de la despedida de Neytiri -->
+            <div id="regaloEspecial" class="regaloEspecial" aria-hidden="true">
+                <div class="regaloEspecialCaja">
+                    <div class="regaloEspecialTapa"></div>
+                    <div class="regaloEspecialCintaVertical"></div>
+                    <div class="regaloEspecialCintaHorizontal"></div>
+                    <div class="regaloEspecialMoño"></div>
+                    <span class="regaloEspecialBrillo">✦</span>
+                </div>
+                <div class="regaloEspecialEtiqueta">PARA NICKY 💙</div>
+                <button id="botonAbrirRegalo" type="button">Abrir regalito 🎁</button>
+            </div>
+
+            <div id="overlayCartaRegalo" class="overlayCartaRegalo" aria-hidden="true">
+                <div class="cartaRegalo" role="dialog" aria-modal="true" aria-labelledby="tituloCartaRegalo">
+                    <button id="cerrarCartaRegalo" class="cerrarCartaRegalo" type="button" aria-label="Cerrar carta">×</button>
+                    <div class="selloCarta">💙</div>
+                    <p class="saludoCarta">PARA TU, NICKY ✨</p>
+                    <h2 id="tituloCartaRegalo">Una pequeña cartita para una persona especial 💌</h2>
+                    <div class="textoCartaRegalo">
+                        <p>¡¡¡NICKIIII!!!, si llegaste hasta aquí, significa que abriste tu regalito. 🥹💙</p>
+                        <p>Hola Nicky buenas noches, Bueno yo de mi aparte quise prepararte como ultimo regalo una cartita de mi parte: Ante todo empesando por,¡¡¡Felicitarteee Otra vess Shushaaa!!! Felizzzz Felizzz cumpleañosss Amigisssss🥳🥳🥳, Omggg... !Porfin llego tu diaaa!💖💖🥳</p>
+                        <p>Siiiii!!! JSJSJS, Hay Nicki de mi parte ante todo te quiero decir que; Espero mucho que puedas cumplir muchos mas añitos hasta llegar hasta los ¡¡millll!! JAHSAJSH. Ahhh y weno tambien espero bastante que este nuevo año te esperen muchas cosas por las que te hagan ser feliz y sonreir 😊. Ojala espero mucho que este nuevo año puedas cumplir a todo lo que te propongas y conoser personas que te quieran tal cual como eres ✨❤️‍🩹, Encerio te mereses ser feliz Nicki 🥹🥹, Eres una gran amiga... De echo tu muy bien sabes que te considero como mi "MI MEJOR AMIGIS" jajajaj, y encerio nada me hace enorgulleser que eso. De ganarme tu honestidad, tu lealtad, tu respeto y sobre todo tu cariño 💖😊, Ayyyy Nicki encerio estoy infinitamente agradecido contigo por todo 🤧🤧🥹... Y claro tambien sobrarian palabras para decir que tu me caes super chevere deverdad 💖😊. Te quiero dar muchas gracias por dejarme quedarme contigo hasta ahora 🤧, Encerio (GRACIAS,GRACIAS,GRACIAS) lo valoro muchisimo 💖😊✨</p>
+                        <p>JSJSJ... Y Claro tambien tengo que agradecerte un monton por las partidas que nos metemos a jugar juntos, y para serte honesto... Amo esa vibra que tienes que, con solo pasar jugar un poco... en los dias que no me siento de buenas que digamos, Siempre hayas la forma de hacerme sentir mejor ;>... Talves tu lo pienses como algo pequeño pero para mi significa mucho Nicki💖❤️‍🩹</p>
+                        <p>Y weno weno... Ahora si para pasar a ya a retirarme, solamente queria ¡¡felicitarte otra ves!!, ¡¡¡FELIZZZ CUMPLEAÑOSSSS AMIGISSSSS!!!🥳🥳🥳🥳</p>
+                        <p class="firmaCarta">Con mucho cariño, de parte de tu amigo Kevin :3<br>Ahhh, y weno tambien te deje un regalito abajito jejeje.</p>
+                    </div>
+
+                    <div class="zonaCodigoRegalo">
+                        <p>🎁 Tu código de regalito</p>
+                        <div class="codigoRegalo" id="codigoRegalo">PH6PB-4WYMY-26ZKX</div>
+                        <div class="accionesRegalo">
+                            <button id="botonCopiarCodigo" type="button">📋 Copiar código</button>
+                            <button id="botonCanjearRegalo" type="button">🎁 Canjear regalito</button>
+                        </div>
+                        <p id="estadoCodigoRegalo" class="estadoCodigoRegalo" aria-live="polite"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="calabazaHalloween izq"></div>
+            <div class="calabazaHalloween der"></div>
+            <div class="mesaHalloween"><div class="mantelHalloween"></div></div>
+            <div class="tortaHalloween" aria-label="Torta de cumpleaños decorada">
+                <div class="baseTorta"></div>
+                <div class="pisoTorta pisoInferior"><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="pisoTorta pisoSuperior"><i></i><i></i><i></i></div>
+                <div class="glaseadoTorta"></div>
+                <div class="adornoTorta">✦ <span>🎃</span> ✦</div>
+                <div class="placaTorta">HAPPY B-DAY</div>
+                <div class="sprinkles sprinklesUno"></div><div class="sprinkles sprinklesDos"></div>
+            </div>
+            <div class="resplandorVela"></div>
+            <div class="velaPastel"></div>
+            <div class="mechaVela"></div>
+            <div class="llamaPastel"></div>
+            <div class="oscuridadHalloween"></div>
+            <div id="tituloPreCancion" class="tituloPreCancion" aria-live="polite"></div>
+            <div id="letraCumple" class="letraCumple" aria-live="off"></div>
+            <div id="confetiCumple" class="confetiCumple" aria-hidden="true"></div>
+            <img id="neytiriSorpresaImagen" src="stickers/Neytiri_01.png" alt="Neytiri aparece para felicitar a Niky" aria-hidden="true">
+            <audio id="audioCumpleanos" preload="auto" src="musica/Feliz Cumpleaños Instrumental de Piano.mp3"></audio>
+            <div id="panelSecuenciaCumple" class="panelSecuenciaCumple" role="status" aria-live="polite" hidden>
+                <p id="mensajeSecuenciaCumple"></p>
+                <div id="accionesSecuenciaCumple"></div>
+            </div>
+        </section>
+
+        <!-- Escenario de Capi DJ. Fondo esperado: imagenes/fondo-capi-dj.jpg.
+             Stickers esperados: stickers/Capi_01.png, Capi_02.png, etc. -->
+        <section id="escenaCapi" aria-label="Escenario de Capi DJ">
+            <div class="etiquetaCapi">🎧 CAPI DJ 🎧</div>
+            <div class="decoracionHalloweenCapi" aria-hidden="true">
+                <span class="adornoCapi a1">🎃</span><span class="adornoCapi a2">🦇</span>
+                <span class="adornoCapi a3">👻</span><span class="adornoCapi a4">🎃</span>
+                <span class="adornoCapi a5">✦ 🕸️ ✦</span><span class="adornoCapi a6">🦇</span><span class="adornoCapi a7">🕷️</span>
+            </div>
+            <!-- Luces móviles de discoteca y destellos del ambiente -->
+            <div class="lucesFiestaCapi" aria-hidden="true">
+                <span class="hazCapi hazUno"></span>
+                <span class="hazCapi hazDos"></span>
+                <span class="hazCapi hazTres"></span>
+                <span class="destelloCapi destelloUno"></span>
+                <span class="destelloCapi destelloDos"></span>
+            </div>
+            <!-- Las serpentinas aparecen en pequeñas ráfagas cada cierto tiempo -->
+            <div id="serpentinasCapi" aria-hidden="true"></div>
+            <!-- Stickers de Capi: Capi_01.png hasta Capi_07.png -->
+            <div class="zonaStickerCapi" aria-hidden="true">
+                <img id="imagenCapi" src="stickers/Capi_01.png" alt="Capi DJ">
+            </div>
+            <!-- Audio que comienza al terminar el último diálogo de Capi -->
+            <audio id="audioCapi" preload="auto" src="musica/Mix_20261011202126.wav"></audio>
+            <div id="panelDialogoCapi" role="dialog" aria-live="polite" aria-label="Diálogo de Capi">
+                <p id="mensajeCapi"></p><div id="accionesCapi"></div>
+            </div>
+            <div class="cortinaCapi" aria-hidden="true"></div>
+        </section>
+
+        <script>
+
+        /* =========================================
+           DATOS DE NEYTIRI
+        ========================================== */
+
+        const escenas = [
+
+            {
+                imagen: "stickers/Neytiri_01.png",
+
+                texto:
+                    "Ejem... ¿hola? 👀",
+
+                boton:
+                    "OK 💙"
+            },
+
+
+            {
+                imagen: "stickers/Neytiri_02.png",
+
+                texto:
+                    "Mucho gusto. Soy Neytiri :3.",
+
+                boton:
+                    "Mucho gusto"
+            },
+
+
+            {
+                imagen: "stickers/Neytiri_03.png",
+
+                texto:
+                    "Y voy a ser la encargada de acompañarte durante esta pequeña sorpresa.",
+
+                boton:
+                    "Continúa..."
+            },
+
+
+            {
+                imagen: "stickers/Neytiri_04.png",
+
+                texto:
+                    "Aunque debo advertirte algo... 👀",
+
+                boton:
+                    "¿Qué cosa?"
+            },
+
+
+            {
+                imagen: "stickers/Neytiri_05.png",
+
+                texto:
+                    "Vas a tener que confiar en mí hasta el final.",
+
+                boton:
+                    "Confío 💙"
+            },
+
+
+            {
+                imagen: "stickers/Neytiri_06.png",
+
+                texto:
+                    "Perfecto. Entonces... podemos comenzar. ✨",
+
+                boton:
+                    "Empezar ✨"
+            }
+
+        ];
+
+
+        /* =========================================
+           ELEMENTOS HTML
+        ========================================== */
+
+        const pantallaCarga =
+            document.getElementById("pantallaCarga");
+
+        const escenaNeytiri =
+            document.getElementById("escenaNeytiri");
+
+        const imagenNeytiri =
+            document.getElementById("imagenNeytiri");
+
+        const textoDialogo =
+            document.getElementById("textoDialogo");
+
+        const botonContinuar =
+            document.getElementById("botonContinuar");
+
+
+        let escenaActual = 0;
+
+
+        /* =========================================
+           MOSTRAR ESCENA
+        ========================================== */
+
+        function mostrarEscena(indice) {
+
+            const escena =
+                escenas[indice];
+
+
+            imagenNeytiri.classList.add("cambiando");
+
+            textoDialogo.style.opacity = "0";
+
+
+            setTimeout(() => {
+
+                imagenNeytiri.src =
+                    escena.imagen;
+
+                textoDialogo.textContent =
+                    escena.texto;
+
+                botonContinuar.textContent =
+                    escena.boton;
+
+
+                imagenNeytiri.classList.remove("cambiando");
+
+                textoDialogo.style.opacity = "1";
+
+            }, 300);
+
+        }
+
+
+        /* =========================================
+           BOTÓN
+        ========================================== */
+
+        let presentacionTerminada = false;
+
+        botonContinuar.addEventListener("click", () => {
+
+            // Cuando llegamos al mensaje final, el botón inicia la escena Halloween.
+            if (presentacionTerminada) {
+                iniciarEscenaHalloween();
+                return;
+            }
+
+            escenaActual++;
+
+            if (escenaActual < escenas.length) {
+                mostrarEscena(escenaActual);
+            } else {
+                terminarPresentacion();
+            }
+        });
+
+
+        /* =========================================
+           FINAL DE LA PRESENTACIÓN
+        ========================================== */
+
+        function terminarPresentacion() {
+            presentacionTerminada = true;
+            imagenNeytiri.src = "stickers/Neytiri_07.png";
+            textoDialogo.textContent = "Muy bien... ahora sí. ✨";
+            botonContinuar.textContent = "Continuar 💜";
+        }
+
+        /* =========================================
+           TRANSICIÓN A HALLOWEEN: OSCURIDAD + VELA + MÚSICA
+        ========================================== */
+
+        let secuenciaHalloweenIniciada = false;
+        let audioCumpleanosIniciado = false;
+        let etapaCumpleanos = "inicial";
+
+        const audioCumpleanos = document.getElementById("audioCumpleanos");
+        const panelSecuenciaCumple = document.getElementById("panelSecuenciaCumple");
+        const mensajeSecuenciaCumple = document.getElementById("mensajeSecuenciaCumple");
+        const accionesSecuenciaCumple = document.getElementById("accionesSecuenciaCumple");
+        const imagenSorpresaNeytiri = document.getElementById("neytiriSorpresaImagen");
+        const tituloPreCancion = document.getElementById("tituloPreCancion");
+        const letraCumple = document.getElementById("letraCumple");
+        let temporizadoresPreCancion = [];
+
+        function mostrarMensajeCumple(texto, botones) {
+            mensajeSecuenciaCumple.textContent = texto;
+            accionesSecuenciaCumple.replaceChildren();
+            botones.forEach(({ texto, accion }) => {
+                const boton = document.createElement("button");
+                boton.type = "button";
+                boton.textContent = texto;
+                boton.addEventListener("click", accion, { once: true });
+                accionesSecuenciaCumple.appendChild(boton);
+            });
+            panelSecuenciaCumple.hidden = false;
+            panelSecuenciaCumple.setAttribute("role", "dialog");
+        }
+
+        function ocultarMensajeCumple() {
+            panelSecuenciaCumple.hidden = true;
+            panelSecuenciaCumple.classList.remove("mensajeSaliendo", "mensajeEntrando", "mensajeVisible");
+            accionesSecuenciaCumple.replaceChildren();
+        }
+
+        function mostrarMensajeCumpleSuave(texto, botones) {
+            mostrarMensajeCumple(texto, botones);
+            panelSecuenciaCumple.classList.remove("mensajeSaliendo", "mensajeVisible");
+            panelSecuenciaCumple.classList.add("mensajeEntrando");
+            // Forzamos el estado inicial para que la transición de entrada se vea.
+            void panelSecuenciaCumple.offsetWidth;
+            requestAnimationFrame(() => {
+                panelSecuenciaCumple.classList.add("mensajeVisible");
+                panelSecuenciaCumple.classList.remove("mensajeEntrando");
+            });
+        }
+
+        function mostrarPiensaDeseo() {
+            if (etapaCumpleanos === "deseo" || etapaCumpleanos === "ok" || etapaCumpleanos === "soplar" || etapaCumpleanos === "final") return;
+            etapaCumpleanos = "deseo";
+            mostrarMensajeCumple("Piensa...y pide tu deseo", [{ texto: "okiiiiiiiiiii", accion: () => {
+                etapaCumpleanos = "soplar";
+                mostrarMensajeCumple("💨 Sopla la vela", [{ texto: "¡Soplar! 💨", accion: apagarVelaYEncenderLuces }]);
+            }}]);
+        }
+
+        function manejarFalloAudio() {
+            if (etapaCumpleanos !== "cancion") return;
+            // Si el archivo falta o el navegador no puede reproducirlo, se evita dejar la escena bloqueada.
+            audioCumpleanos.pause();
+            mostrarPiensaDeseo();
+        }
+
+        function reproducirCancionCumpleanos() {
+            if (audioCumpleanosIniciado || etapaCumpleanos !== "esperando-audio") return;
+            audioCumpleanosIniciado = true;
+            etapaCumpleanos = "preparacion";
+            mostrarTituloPreCancion("¡Preparada!");
+            temporizadoresPreCancion.push(setTimeout(() => mostrarTituloPreCancion("3"), 3000));
+            temporizadoresPreCancion.push(setTimeout(() => mostrarTituloPreCancion("2"), 4000));
+            temporizadoresPreCancion.push(setTimeout(() => mostrarTituloPreCancion("1"), 5000));
+            temporizadoresPreCancion.push(setTimeout(() => {
+                ocultarTituloPreCancion();
+                iniciarLetraCumple();
+                comenzarAudioCumpleanos();
+            }, 6000));
+        }
+
+        function mostrarTituloPreCancion(texto) {
+            tituloPreCancion.textContent = texto;
+            tituloPreCancion.classList.add("activo");
+        }
+
+        function ocultarTituloPreCancion() {
+            tituloPreCancion.classList.remove("activo");
+        }
+
+        function iniciarLetraCumple() {
+            const versos = [
+                "!Happy birthday to you!",
+                "!Happy birthday to you!",
+                "!Happy birthday dear Niky!",
+                "!Happy birthday to you!"
+            ];
+            letraCumple.replaceChildren();
+            letraCumple.classList.remove("desvanecer");
+            letraCumple.classList.add("visible");
+            const retrasos = [0, 7000, 12500, 16500];
+            versos.forEach((verso, indice) => {
+                temporizadoresPreCancion.push(setTimeout(() => {
+                    const linea = document.createElement("span");
+                    linea.textContent = verso;
+                    letraCumple.appendChild(linea);
+                }, retrasos[indice]));
+            });
+        }
+
+        function comenzarAudioCumpleanos() {
+            etapaCumpleanos = "cancion";
+            audioCumpleanos.currentTime = 0;
+            const promesa = audioCumpleanos.play();
+            if (promesa && typeof promesa.catch === "function") {
+                promesa.catch(() => {
+                    audioCumpleanosIniciado = false;
+                    etapaCumpleanos = "esperando-audio";
+                    letraCumple.classList.add("desvanecer");
+                    mostrarMensajeCumple("Toca para reproducir la canción de cumpleaños 🎵", [{ texto: "Reproducir canción", accion: () => {
+                        ocultarMensajeCumple();
+                        // Si el navegador bloquea la reproducción automática, permite iniciarla con un clic.
+                        comenzarAudioCumpleanos();
+                        audioCumpleanosIniciado = true;
+                    }}]);
+                });
+            }
+        }
+
+        audioCumpleanos.addEventListener("ended", () => {
+            if (etapaCumpleanos !== "cancion") return;
+            letraCumple.classList.add("desvanecer");
+            setTimeout(() => {
+                letraCumple.classList.remove("visible", "desvanecer");
+                letraCumple.replaceChildren();
+                mostrarPiensaDeseo();
+            }, 1900);
+        });
+        audioCumpleanos.addEventListener("error", manejarFalloAudio);
+
+        function apagarVelaYEncenderLuces() {
+            if (etapaCumpleanos !== "soplar") return;
+            etapaCumpleanos = "final";
+            ocultarMensajeCumple();
+            const escenaHalloween = document.getElementById("escenaHalloween");
+            escenaHalloween.classList.add("velaApagada");
+            escenaHalloween.classList.remove("llamaActiva");
+            // El confeti empieza al apagarse la vela y las luces se revelan poco a poco.
+            escenaHalloween.classList.add("confetiActivo");
+            iniciarConfetiCumpleanos();
+            setTimeout(() => {
+                escenaHalloween.classList.add("lucesEncendidas");
+                // Espera a que se luzca el ambiente antes de hacer aparecer a Neytiri.
+                setTimeout(mostrarSorpresaNeytiri, 5200);
+            }, 650);
+        }
+
+        function cambiarStickerSorpresa(nombreArchivo) {
+            imagenSorpresaNeytiri.style.opacity = "0";
+            setTimeout(() => {
+                imagenSorpresaNeytiri.src = `stickers/${nombreArchivo}`;
+                imagenSorpresaNeytiri.style.opacity = "";
+            }, 220);
+        }
+
+        function mostrarSorpresaNeytiri() {
+            const escenaHalloween = document.getElementById("escenaHalloween");
+            escenaHalloween.classList.remove("sorpresaTerminada");
+            escenaHalloween.classList.add("neytiriSorpresa");
+            cambiarStickerSorpresa("Neytiri_08.png");
+
+            mostrarMensajeCumple(
+                "¡¡¡SORPRESAAAAAAAA!!! 🎉🎊 ¡¡¡FELIZ CUMPLEAÑOS, NIKYYYY!!! 🥳💖 ¡¡¡ESTA SORPRESITA ES TODA PARA TI!!!",
+                [{ texto: "¡¡¡NIKYYYY!!! 💗", accion: () => {
+                    cambiarStickerSorpresa("Neytiri_09.png");
+                    mostrarMensajeCumple(
+                        "Ayyyy, ¡por fin llegó tu día! 🥹💙 Quería que tuvieras un rinconcito mágico, lleno de lucecitas, confeti y muchísimo cariño. ¡Te mereces sonreír un montón hoy y siempre! ✨",
+                        [{ texto: "Awww 🥹💗", accion: () => {
+                            cambiarStickerSorpresa("Neytiri_10.png");
+                            mostrarMensajeCumple(
+                                "Niky, ojalá este nuevo año de tu vida te regale momentos preciosos, sueños que se cumplan y personas que te abracen el corazón. Nunca olvides lo especial que eres. 🌷💖",
+                                [{ texto: "¿Y el último mensaje? 👀", accion: () => {
+                                    cambiarStickerSorpresa("Neytiri_09.png");
+                                    mostrarMensajeCumple(
+                                        "Y ahora sí, mi cumpleañera hermosa… ¡disfruta muchísimo tu día! Come tortita, ríe, pide muchos deseos y guarda recuerdos bonitos. ¡Te mando un abrazo gigante, Nikyyyy! 💙🎂",
+                                        [{ texto: "¡A celebrar! 🎉", accion: () => {
+                                            cambiarStickerSorpresa("Neytiri_10.png");
+                                            mostrarMensajeCumple(
+                                                "¡¡¡A DISFRUTAR TU DÍA, NIKYYYY!!! 🎂🎉💗 ¡Que hoy y siempre tengas muchísimas razones para sonreír!",
+                                                []
+                                            );
+
+                                            // Primero se desvanece el mensaje final y Neytiri; después esperamos 15 segundos.
+                                            panelSecuenciaCumple.classList.add("mensajeSaliendo");
+                                            escenaHalloween.classList.add("transicionNeytiri");
+                                            setTimeout(() => {
+                                                panelSecuenciaCumple.hidden = true;
+                                                panelSecuenciaCumple.classList.remove("mensajeSaliendo");
+                                                cambiarStickerSorpresa("Neytiri_11.png");
+                                                setTimeout(() => {
+                                                    // Tras los 15 segundos, Neytiri y su primer diálogo reaparecen suavemente.
+                                                    escenaHalloween.classList.remove("transicionNeytiri");
+                                                    mostrarMensajeCumpleSuave(
+                                                        "Ehhh, no te vayas todavía 👀💗",
+                                                    [{ texto: "¿Qué pasa? 👀", accion: () => {
+                                                        cambiarStickerSorpresa("Neytiri_09.png");
+                                                        mostrarMensajeCumple(
+                                                            "Todavía quedan más sorpresas jsjsjs 😏✨",
+                                                            [{ texto: "¿MÁAAAS? 😭", accion: () => {
+                                                                cambiarStickerSorpresa("Neytiri_10.png");
+                                                                mostrarMensajeCumple(
+                                                                    "Yo opino que aquí hace falta algo más de ambiente 👀🎶",
+                                                                    [{ texto: "¿Ambiente? 🤨", accion: () => {
+                                                                        cambiarStickerSorpresa("Neytiri_12.png");
+                                                                        mostrarMensajeCumple(
+                                                                            "Pero no te preocupes por eso jsjsjs 😌💙",
+                                                                            [{ texto: "A ver, a ver... 👀", accion: () => {
+                                                                                cambiarStickerSorpresa("Neytiri_13.png");
+                                                                                mostrarMensajeCumple(
+                                                                                    "¡Ya tengo a un invitado especial para ti! 🎧🎉",
+                                                                                    [{ texto: "¿UN INVITADO? 👀", accion: () => {
+                                                                                        cambiarStickerSorpresa("Neytiri_10.png");
+                                                                                        mostrarMensajeCumple(
+                                                                                            "Te dejaré con él. ¡Espero que te guste la sorpresa! 💗",
+                                                                                            [{ texto: "Okiii :3", accion: () => {
+                                                                                                cambiarStickerSorpresa("Neytiri_13.png");
+                                                                                                mostrarMensajeCumple(
+                                                                                                    "Tal vez nos veamos luego jsjsjs. ¡Cuídate mucho, Niky! 🥹💙",
+                                                                                                    [{ texto: "¡Nos vemos! 💗", accion: () => {
+                                                                                                        cambiarStickerSorpresa("Neytiri_10.png");
+                                                                                                        mostrarMensajeCumple(
+                                                                                                            "¡Y otra vez, FELIZ CUMPLEAÑOSSS, NIKYYYY! 🎂🎉💗",
+                                                                                                            [{ texto: "¡¡¡GRACIASSS!!! 🥹💖", accion: () => {
+                                                                                                                cambiarStickerSorpresa("Neytiri_08.png");
+                                                                                                                mostrarMensajeCumple(
+                                                                                                                    "Bueno, ahora sí, byeee :3 👋💙",
+                                                                                                                    [{ texto: "¡Que pase Capi DJ! 🎧", accion: () => {
+                                                                                                                        ocultarMensajeCumple();
+                                                                                                                        iniciarEntradaCapi();
+                                                                                                                    }}]
+                                                                                                                );
+                                                                                                            }}]
+                                                                                                        );
+                                                                                                    }}]
+                                                                                                );
+                                                                                            }}]
+                                                                                        );
+                                                                                    }}]
+                                                                                );
+                                                                            }}]
+                                                                        );
+                                                                    }}]
+                                                                );
+                                                            }}]
+                                                        );
+                                                    }}]
+                                                );
+                                                }, 15000);
+                                            }, 900);
+                                        }}]
+                                    );
+                                }}]
+                            );
+                        }}]
+                    );
+                }}]
+            );
+        }
+
+        /* =========================================
+           ENTRADA, SHOW Y DESPEDIDA DE CAPI DJ
+        ========================================== */
+        let entradaCapiIniciada = false;
+        let despedidaCapiIniciada = false;
+        const escenaCapi = document.getElementById("escenaCapi");
+        const panelDialogoCapi = document.getElementById("panelDialogoCapi");
+        const mensajeCapi = document.getElementById("mensajeCapi");
+        const accionesCapi = document.getElementById("accionesCapi");
+        const imagenCapi = document.getElementById("imagenCapi");
+        const zonaStickerCapi = document.querySelector(".zonaStickerCapi");
+        const audioCapi = document.getElementById("audioCapi");
+        let numeroStickerCapi = 0;
+
+        function mostrarStickerCapi(numero) {
+            // Los stickers 04 y 05 fueron normalizados a Capi_04.png / Capi_05.png.
+            const nombreSticker = `Capi_0${numero}.png`;
+            const rutaSticker = `stickers/${nombreSticker}`;
+
+            zonaStickerCapi.classList.remove("stickerFaltante");
+            zonaStickerCapi.removeAttribute("data-sticker-faltante");
+            imagenCapi.style.visibility = "visible";
+            imagenCapi.src = rutaSticker;
+            imagenCapi.alt = `Capi DJ - diálogo ${numero}`;
+
+            imagenCapi.onerror = () => {
+                zonaStickerCapi.classList.add("stickerFaltante");
+                zonaStickerCapi.setAttribute("data-sticker-faltante", `Falta: ${rutaSticker}`);
+            };
+
+            imagenCapi.onload = () => {
+                zonaStickerCapi.classList.remove("stickerFaltante");
+                zonaStickerCapi.removeAttribute("data-sticker-faltante");
+                imagenCapi.style.visibility = "visible";
+            };
+        }
+
+        function mostrarDialogoCapi(texto, botonTexto, siguiente) {
+            numeroStickerCapi = Math.min(numeroStickerCapi + 1, 7);
+            mostrarStickerCapi(numeroStickerCapi);
+
+            panelDialogoCapi.classList.remove("capiDialogoActivo");
+            setTimeout(() => {
+                mensajeCapi.textContent = texto;
+                accionesCapi.replaceChildren();
+                const boton = document.createElement("button");
+                boton.type = "button";
+                boton.textContent = botonTexto;
+                boton.addEventListener("click", siguiente, { once: true });
+                accionesCapi.appendChild(boton);
+                escenaCapi.classList.add("capiDialogoActivo");
+            }, 350);
+        }
+
+        function iniciarDialogosCapi() {
+            numeroStickerCapi = 0;
+            despedidaCapiIniciada = false;
+            if (audioCapi) {
+                audioCapi.pause();
+                audioCapi.currentTime = 0;
+            }
+
+            mostrarDialogoCapi("¡¡¡YOOOOO, NIKYYYY!!! 🎧🔥 ¡¡¡QUE SE SIENTA ESA ENERGÍAAAA!!!", "¡¡¡HOOOLAAA!!! 🎉", () => {
+                mostrarDialogoCapi("¡Ejem, ejem! 😎🎤 Para quienes no me conocen, soy Capi, el DJ encargado de ponerle ritmo a esta celebración.", "¡Un gusto, Capi! 😎", () => {
+                    mostrarDialogoCapi("¡Y ESPERAAA! 👀🎃 ¡Que tenemos una cumpleañera que merece una celebración de otro nivel!", "¿¿¿QUÉ PREPARASTE??? 👀", () => {
+                        mostrarDialogoCapi("Una mezcla de música, sorpresas y energía cumpleañera. 😏🎶 ¡Espero que estés lista, Niky!", "¡LISTÍSIMA! 💃🎉", () => {
+                            mostrarDialogoCapi("Entonces sube esa energía, prepara esa sonrisa y... ¡¡¡VAMOS A ENCENDER LA FIESTAAAA!!! 🎧🔥", "¡¡¡DALE CAPI DJ!!! 🔥", () => {
+                                mostrarDialogoCapi("¡¡¡FELIZ CUMPLEAÑOS, NIKYYYY!!! 🎂🎉💙 ¡¡¡CAPI DJ ESTÁ EN LA CABINAAA!!!", "¡¡¡QUE EMPIECE EL SHOW!!! 🎶", () => {
+                                    mostrarDialogoCapi("¡Esa es la actitud! 😎🎛️ Próxima parada: ¡música y celebración!", "¡VAMOOOOS! 🎧", () => {
+                                        panelDialogoCapi.classList.remove("capiDialogoActivo");
+                                        mensajeCapi.textContent = "";
+                                        accionesCapi.replaceChildren();
+
+                                        if (audioCapi) {
+                                            audioCapi.currentTime = 0;
+                                            const promesa = audioCapi.play();
+                                            if (promesa && typeof promesa.catch === "function") {
+                                                promesa.catch(() => {
+                                                    // Si el navegador bloquea el audio, se mantiene la escena y el usuario puede
+                                                    // iniciar el archivo manualmente desde el navegador.
+                                                });
+                                            }
+                                        }
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        }
+
+        function iniciarDespedidaCapi() {
+            if (despedidaCapiIniciada) return;
+            despedidaCapiIniciada = true;
+
+            numeroStickerCapi = 0;
+
+            mostrarDialogoCapi(
+                "¡¡¡NIKYYYY, QUÉ FIESTÓN!!! 🎧🔥 Espero que hayas disfrutado muchísimo esta mezcla. ¡Pero todavía me queda una última misión!",
+                "¿¿¿Cuál misión??? 👀",
+                () => {
+                    mostrarDialogoCapi(
+                        "Mi misión es asegurarme de que termines esta aventura con una sonrisa enorme. 😎💙 Y creo que ya sé quién puede encargarse de eso...",
+                        "¿Neytiri? 👀",
+                        () => {
+                            mostrarDialogoCapi(
+                                "¡¡¡Exactooo!!! 😏🎃 Nuestra anfitriona azul tiene algo preparado para ti. Yo solo vine a ponerle ritmo al asunto. 🎶",
+                                "Awww 🥹💙",
+                                () => {
+                                    mostrarDialogoCapi(
+                                        "Así que baja las luces, guarda esa energía de DJ y prepárate para volver al rincón mágico donde empezó todo... ✨",
+                                        "¡Nos vemos, Capi! 👋",
+                                        () => {
+                                            mostrarDialogoCapi(
+                                                "Ha sido un honor acompañarte, Niky. 🎧💙 Gracias por bailar, reír y seguirme el juego hasta aquí.",
+                                                "Awww, gracias 🥹",
+                                                () => {
+                                                    mostrarDialogoCapi(
+                                                        "Y ahora sí... Capi DJ se despide de la cabina. 😎🎛️ ¡Pero recuerda: los cumpleaños se celebran, los recuerdos se guardan y las sonrisas se repiten!",
+                                                        "¡¡¡BYEEEE CAPI!!! 🎉",
+                                                        regresarAHalloweenConNeytiri
+                                                    );
+                                                }
+                                            );
+                                        }
+                                    );
+                                }
+                            );
+                        }
+                    );
+                }
+            );
+        }
+
+        function regresarAHalloweenConNeytiri() {
+            panelDialogoCapi.classList.remove("capiDialogoActivo");
+            mensajeCapi.textContent = "";
+            accionesCapi.replaceChildren();
+
+            if (audioCapi) audioCapi.pause();
+
+            const cortina = escenaCapi.querySelector(".cortinaCapi");
+            escenaCapi.classList.add("capiSaliendo");
+            escenaCapi.classList.remove("lucesCapi", "capiDialogoActivo");
+
+            detenerSerpentinasCapi();
+
+            setTimeout(() => {
+                escenaCapi.classList.remove("visible", "capiSaliendo", "luzEtapa1", "luzEtapa2");
+                cortina.style.removeProperty("opacity");
+
+                const halloween = document.getElementById("escenaHalloween");
+                halloween.classList.remove("sorpresaTerminada", "transicionNeytiri");
+                halloween.classList.add("visible", "lucesEncendidas", "neytiriSorpresa");
+                cambiarStickerSorpresa("Neytiri_08.png");
+
+                const regalo = document.getElementById("regaloEspecial");
+                if (regalo) {
+                    regalo.classList.remove("regaloEspecialVisible");
+                    regalo.setAttribute("aria-hidden", "true");
+                }
+
+                // Pequeña pausa para que el regreso se sienta como una nueva escena.
+                setTimeout(() => {
+                    mostrarMensajeCumpleSuave(
+                        "¿Holaaaa? 👀💙 ¿Volviste? Me da muchísimo gusto que volvieras, Niky.",
+                        [{
+                            texto: "Siii, aquí estoy 🥹",
+                            accion: () => {
+                                cambiarStickerSorpresa("Neytiri_09.png");
+                                mostrarMensajeCumple(
+                                    "Jejeje, sabía que regresarías. ✨ Y mira... justamente estaba preparando este regalito para ti.",
+                                    [{
+                                        texto: "¿¿¿Un regalito para mí??? 🎁",
+                                        accion: () => {
+                                            cambiarStickerSorpresa("Neytiri_10.png");
+                                            mostrarMensajeCumple(
+                                                "Sí, para ti. 💙 Quería dejarte algo que pudieras abrir por tu cuenta, porque esta parte de la sorpresa quiero que la descubras tú misma.",
+                                                [{
+                                                    texto: "¿Y dónde está? 👀",
+                                                    accion: () => {
+                                                        cambiarStickerSorpresa("Neytiri_12.png");
+                                                        mostrarMensajeCumple(
+                                                            "Está ahí cerquita del pastel... 🎂🎁 Tómate tu tiempo y míralo bien.",
+                                                            [{
+                                                                texto: "Ya lo viii 😭💗",
+                                                                accion: () => {
+                                                                    cambiarStickerSorpresa("Neytiri_13.png");
+                                                                    mostrarMensajeCumple(
+                                                                        "¿Por qué no lo abres y la chequeas por ti misma? 👀💙 Bueno, te dejo con tu regalito, Niky... Ha sido un gusto acompañarte hasta aquí.",
+                                                                        [{
+                                                                            texto: "Abrir mi regalito 🎁",
+                                                                            accion: () => {
+                                                                                mostrarMensajeCumple(
+                                                                                    "Y como último mensaje de mi parte quiero decir...",
+                                                                                    [{
+                                                                                        texto: "¿Qué cosa? 👀",
+                                                                                        accion: () => {
+                                                                                            cambiarStickerSorpresa("Neytiri_08.png");
+                                                                                            mostrarMensajeCumple(
+                                                                                                "¡¡¡¡FELIZZZZZ CUMPLEAÑOSSSSSSS!!!! 🎂🎉💙",
+                                                                                                [{
+                                                                                                    texto: "🥹💙",
+                                                                                                    accion: () => {
+                                                                                                        cambiarStickerSorpresa("Neytiri_09.png");
+                                                                                                        mostrarMensajeCumple(
+                                                                                                            "Bueno ahora siii... Byeee Nicky, cuídate mucho :3 👋💙",
+                                                                                                            [{
+                                                                                                                texto: "¡Adiós! 🥹",
+                                                                                                                accion: () => {
+                                                                                                                    ocultarMensajeCumple();
+                                                                                                                    mostrarRegaloEspecial();
+                                                                                                                }
+                                                                                                            }]
+                                                                                                        );
+                                                                                                    }
+                                                                                                }]
+                                                                                            );
+                                                                                        }
+                                                                                    }]
+                                                                                );
+                                                                            }
+                                                                        }]
+                                                                    );
+                                                                }
+                                                            }]
+                                                        );
+                                                    }
+                                                }]
+                                            );
+                                        }
+                                    }]
+                                );
+                            }
+                        }]
+                    );
+                }, 700);
+            }, 350);
+        }
+
+        function mostrarRegaloEspecial() {
+            const regalo = document.getElementById("regaloEspecial");
+            if (!regalo) return;
+            regalo.classList.add("regaloEspecialVisible");
+            regalo.setAttribute("aria-hidden", "false");
+        }
+
+        function abrirCartaRegalo() {
+            const overlay = document.getElementById("overlayCartaRegalo");
+            if (!overlay) return;
+            overlay.classList.add("visible");
+            overlay.setAttribute("aria-hidden", "false");
+            const botonCerrar = document.getElementById("cerrarCartaRegalo");
+            if (botonCerrar) botonCerrar.focus();
+        }
+
+        function cerrarCartaRegalo() {
+            const overlay = document.getElementById("overlayCartaRegalo");
+            if (!overlay) return;
+            overlay.classList.remove("visible");
+            overlay.setAttribute("aria-hidden", "true");
+        }
+
+        function copiarCodigoRegalo() {
+            const codigo = document.getElementById("codigoRegalo");
+            const estado = document.getElementById("estadoCodigoRegalo");
+            if (!codigo || !estado) return;
+
+            const texto = codigo.textContent.trim();
+
+            const mostrarConfirmacion = () => {
+                estado.textContent = "¡Código copiado! 💙✨";
+                setTimeout(() => { estado.textContent = ""; }, 2600);
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(texto).then(mostrarConfirmacion).catch(() => copiarCodigoAlternativo(texto, estado, mostrarConfirmacion));
+            } else {
+                copiarCodigoAlternativo(texto, estado, mostrarConfirmacion);
+            }
+        }
+
+        function copiarCodigoAlternativo(texto, estado, confirmacion) {
+            const area = document.createElement("textarea");
+            area.value = texto;
+            area.style.position = "fixed";
+            area.style.opacity = "0";
+            document.body.appendChild(area);
+            area.select();
+            try {
+                document.execCommand("copy");
+                confirmacion();
+            } catch (error) {
+                estado.textContent = "No pude copiarlo automáticamente. Selecciónalo y cópialo. 💙";
+            }
+            area.remove();
+        }
+
+        function canjearRegalito() {
+            // CAMBIA ESTA URL por la página real donde se canjea tu regalo.
+            const URL_CANJE = "https://www.roblox.com/es/redeem";
+            window.open(URL_CANJE, "_blank", "noopener,noreferrer");
+        }
+
+        document.getElementById("botonAbrirRegalo")?.addEventListener("click", abrirCartaRegalo);
+        document.getElementById("cerrarCartaRegalo")?.addEventListener("click", cerrarCartaRegalo);
+        document.getElementById("botonCopiarCodigo")?.addEventListener("click", copiarCodigoRegalo);
+        document.getElementById("botonCanjearRegalo")?.addEventListener("click", canjearRegalito);
+
+        document.getElementById("overlayCartaRegalo")?.addEventListener("click", (event) => {
+            if (event.target.id === "overlayCartaRegalo") cerrarCartaRegalo();
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") cerrarCartaRegalo();
+        });
+
+        audioCapi?.addEventListener("ended", () => {
+            iniciarDespedidaCapi();
+        });
+
+        function iniciarEntradaCapi() {
+            if (entradaCapiIniciada) return;
+            entradaCapiIniciada = true;
+            const cortina = escenaCapi.querySelector(".cortinaCapi");
+            escenaHalloween.classList.add("sorpresaTerminada", "transicionNeytiri");
+
+            escenaCapi.classList.remove("luzEtapa1", "luzEtapa2", "lucesCapi", "capiPresente", "capiDialogoActivo", "capiSaliendo");
+            cortina.style.transition = "none";
+            cortina.style.opacity = "1";
+            escenaCapi.classList.add("visible");
+            void cortina.offsetWidth;
+            cortina.style.transition = "opacity 1.8s ease";
+
+            setTimeout(() => {
+                escenaCapi.classList.add("luzEtapa1");
+            }, 500);
+
+            setTimeout(() => {
+                escenaCapi.classList.add("luzEtapa2");
+            }, 1800);
+
+            setTimeout(() => {
+                cortina.style.removeProperty("opacity");
+                escenaCapi.classList.add("lucesCapi");
+                iniciarSerpentinasCapi();
+                setTimeout(() => {
+                    iniciarDialogosCapi();
+                }, 1800);
+            }, 3300);
+        }
+
+        let intervaloSerpentinasCapi = null;
+        const coloresSerpentinaCapi = ["#ff9d42", "#d7a0ff", "#55e7e4", "#ff6f91", "#ffe08a"];
+
+        function lanzarSerpentinasCapi() {
+            const contenedor = document.getElementById("serpentinasCapi");
+            if (!contenedor || !escenaCapi.classList.contains("lucesCapi")) return;
+
+            // Cada ráfaga lanza serpentinas desde varios puntos de la parte superior.
+            const cantidad = window.innerWidth < 600 ? 18 : 30;
+            for (let i = 0; i < cantidad; i++) {
+                const tira = document.createElement("span");
+                tira.className = "serpentinaCapi";
+                tira.style.left = `${Math.random() * 100}%`;
+                tira.style.background = coloresSerpentinaCapi[Math.floor(Math.random() * coloresSerpentinaCapi.length)];
+                tira.style.color = tira.style.background;
+                tira.style.setProperty("--duracion-serp", `${4.5 + Math.random() * 3.5}s`);
+                tira.style.setProperty("--deriva-serp", `${-100 + Math.random() * 200}px`);
+                tira.style.setProperty("--giro-serp", `${360 + Math.random() * 900}deg`);
+                tira.style.animationDelay = `${Math.random() * 1.2}s`;
+                contenedor.appendChild(tira);
+                tira.addEventListener("animationend", () => tira.remove(), { once: true });
+            }
+        }
+
+        function iniciarSerpentinasCapi() {
+            if (intervaloSerpentinasCapi) return;
+            lanzarSerpentinasCapi();
+            // Repite la ráfaga aproximadamente cada 12 segundos, no de forma constante.
+            intervaloSerpentinasCapi = setInterval(lanzarSerpentinasCapi, 12000);
+        }
+
+        function detenerSerpentinasCapi() {
+            if (intervaloSerpentinasCapi) {
+                clearInterval(intervaloSerpentinasCapi);
+                intervaloSerpentinasCapi = null;
+            }
+        }
+
+        function iniciarEntradaCapi() {
+            if (entradaCapiIniciada) return;
+            entradaCapiIniciada = true;
+            const cortina = escenaCapi.querySelector(".cortinaCapi");
+            escenaHalloween.classList.add("sorpresaTerminada", "transicionNeytiri");
+
+            // Aparece la nueva escena totalmente oscura, con el fondo ya colocado detrás.
+            escenaCapi.classList.remove("luzEtapa1", "luzEtapa2", "lucesCapi", "capiPresente", "capiDialogoActivo");
+            cortina.style.transition = "none";
+            cortina.style.opacity = "1";
+            escenaCapi.classList.add("visible");
+            void cortina.offsetWidth;
+            cortina.style.transition = "opacity 1.8s ease";
+
+            // Primera luz: resplandor tenue.
+            setTimeout(() => {
+                escenaCapi.classList.add("luzEtapa1");
+            }, 500);
+
+            // Segunda luz: se empieza a distinguir el fondo y la decoración.
+            setTimeout(() => {
+                escenaCapi.classList.add("luzEtapa2");
+            }, 1800);
+
+            // Se encienden por completo las luces de la cabina.
+            setTimeout(() => {
+                // Quitamos la opacidad en línea para que las clases CSS puedan abrir la cortina.
+                // Si permanece cortina.style.opacity = "1", esa regla inline tapa el fondo
+                // aunque se active la clase lucesCapi.
+                cortina.style.removeProperty("opacity");
+                escenaCapi.classList.add("lucesCapi");
+                iniciarSerpentinasCapi();
+                setTimeout(() => {
+                    iniciarDialogosCapi();
+                }, 1800);
+            }, 3300);
+        }
+
+        let confetiIniciado = false;
+        function iniciarConfetiCumpleanos() {
+            if (confetiIniciado) return;
+            confetiIniciado = true;
+            const contenedor = document.getElementById("confetiCumple");
+            const colores = ["#FF8C24", "#A855F7", "#35D6C5"];
+            const cantidad = window.innerWidth < 600 ? 58 : 92;
+            for (let i = 0; i < cantidad; i++) {
+                const pieza = document.createElement("span");
+                const capa = i % 3 === 0 ? "capaFondo" : (i % 3 === 1 ? "capaMedia" : "capaFrente");
+                pieza.className = `piezaConfeti ${capa}`;
+                pieza.style.setProperty("--x", `${Math.random() * 100}%`);
+                pieza.style.setProperty("--w", `${4 + Math.random() * (i % 3 === 0 ? 4 : 6)}px`);
+                pieza.style.setProperty("--h", `${7 + Math.random() * 9}px`);
+                pieza.style.setProperty("--color", colores[Math.floor(Math.random() * colores.length)]);
+                pieza.style.setProperty("--opacidad", `${0.55 + Math.random() * 0.45}`);
+                pieza.style.setProperty("--balanceo", `${-35 + Math.random() * 70}px`);
+                pieza.style.setProperty("--duracion", `${7 + Math.random() * 8}s`);
+                pieza.style.setProperty("--retraso", `${-Math.random() * 14}s`);
+                pieza.style.setProperty("--forma", Math.random() > 0.72 ? "50%" : "2px");
+                contenedor.appendChild(pieza);
+            }
+        }
+
+        function iniciarEscenaHalloween() {
+            if (secuenciaHalloweenIniciada) return;
+            secuenciaHalloweenIniciada = true;
+            const escenaHalloween = document.getElementById("escenaHalloween");
+
+            botonContinuar.disabled = true;
+            escenaNeytiri.style.opacity = "0";
+
+            setTimeout(() => {
+                escenaNeytiri.style.visibility = "hidden";
+                escenaHalloween.classList.add("visible");
+
+                // Se conserva la transición existente: oscuridad primero, luego la llama.
+                setTimeout(() => {
+                    escenaHalloween.classList.add("llamaActiva");
+                    etapaCumpleanos = "esperando-audio";
+                    reproducirCancionCumpleanos();
+                }, 5000);
+            }, 2500);
+        }
+        function crearParticulas() {
+
+            for (
+                let i = 0;
+                i < 30;
+                i++
+            ) {
+
+                const particula =
+                    document.createElement("div");
+
+
+                particula.className =
+                    "particula";
+
+
+                particula.style.left =
+                    Math.random() * 100 + "%";
+
+
+                particula.style.animationDelay =
+                    Math.random() * 7 + "s";
+
+
+                particula.style.animationDuration =
+                    5 +
+                    Math.random() * 5 +
+                    "s";
+
+
+                document.body.appendChild(
+                    particula
+                );
+
+            }
+
+        }
+
+
+        /* =========================================
+           INICIO
+        ========================================== */
+
+        window.addEventListener(
+            "load",
+            () => {
+
+                crearParticulas();
+
+
+                mostrarEscena(0);
+
+
+                setTimeout(() => {
+
+                    pantallaCarga
+                        .classList
+                        .add("oculta");
+
+
+                    escenaNeytiri
+                        .classList
+                        .add("visible");
+
+                }, 4500);
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
