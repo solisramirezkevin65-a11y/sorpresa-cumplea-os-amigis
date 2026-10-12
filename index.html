@@ -1942,6 +1942,7 @@
                         <div class="accionesRegalo">
                             <button id="botonCopiarCodigo" type="button">📋 Copiar código</button>
                             <button id="botonCanjearRegalo" type="button">🎁 Canjear regalito</button>
+                            <button id="botonSorpresaSecreta" type="button">✨ Sorpresa secreta</button>
                         </div>
                         <p id="estadoCodigoRegalo" class="estadoCodigoRegalo" aria-live="polite"></p>
                     </div>
@@ -2758,11 +2759,17 @@
             const URL_CANJE = "https://www.roblox.com/es/redeem";
             window.open(URL_CANJE, "_blank", "noopener,noreferrer");
         }
+        //Aqui se ubica la sorpresa secreta
+        function sorpresaSecreta() {
+            const URL_SORPRESA = "https://novask.in/k24uezitw";
+            window.open(URL_SORPRESA, "_blank", "noopener,noreferrer");
+        }
 
         document.getElementById("botonAbrirRegalo")?.addEventListener("click", abrirCartaRegalo);
         document.getElementById("cerrarCartaRegalo")?.addEventListener("click", cerrarCartaRegalo);
         document.getElementById("botonCopiarCodigo")?.addEventListener("click", copiarCodigoRegalo);
         document.getElementById("botonCanjearRegalo")?.addEventListener("click", canjearRegalito);
+        document.getElementById("botonSorpresaSecreta")?.addEventListener("click", sorpresaSecreta);
 
         document.getElementById("overlayCartaRegalo")?.addEventListener("click", (event) => {
             if (event.target.id === "overlayCartaRegalo") cerrarCartaRegalo();
