@@ -579,6 +579,7 @@
 
             animation:
                 flotar 3s ease-in-out infinite;
+            transform: translateY(-12px);
 
             transition:
                 opacity 0.35s ease,
@@ -1400,6 +1401,7 @@
             #imagenNeytiri {
                 max-width: min(70vw, 225px);
                 max-height: 100%;
+                transform: translateY(-8px);
             }
 
             .nombreNeytiri {
@@ -1768,7 +1770,7 @@
         #accionesCapi button:focus-visible { outline:3px solid #fff; outline-offset:3px; }
         #escenaCapi .etiquetaCapi { position:absolute; z-index:12; top:5%; left:50%; transform:translateX(-50%); width:90%; text-align:center; color:#fff1ce; font:bold clamp(1.2rem,4vw,2.6rem)/1.1 Arial,sans-serif; letter-spacing:clamp(2px,.7vw,7px); text-shadow:0 0 12px #ff7b30,0 0 28px #9b4dff; opacity:0; transition:opacity 1.8s ease; }
         #escenaCapi.lucesCapi .etiquetaCapi { opacity:1; }
-        @media(max-width:600px){#panelDialogoCapi{top:64%;width:91%}.adornoCapi.a5{top:11%}}
+        @media(max-width:600px){#panelDialogoCapi{top:61%;width:91%}.adornoCapi.a5{top:11%}}
         
         /* =========================================
            SUBTÍTULOS MUSICALES DE CAPI DJ
@@ -2570,12 +2572,12 @@
         
             const tiempo = audioCapi.currentTime;
         
-            // Bienvenida durante los primeros 5 segundos.
+            // Durante los primeros 5 segundos, el mensaje de bienvenida ya está
+            // en el diálogo de Capi. Ocultamos el subtítulo duplicado para no tapar el botón.
             if (tiempo < 5) {
+                subtitulosCapi.classList.remove("visible");
                 subtitulosCapi.textContent =
                     "🎧 ¡Bienvenida a la cabina de Capi DJ, Niky! ¡Que comience la fiesta! 🎉💙";
-        
-                subtitulosCapi.classList.add("visible");
                 return;
             }
         
@@ -2665,6 +2667,7 @@
                                         
                                         if (audioCapi) {
                                             audioCapi.currentTime = 0;
+                                            if (subtitulosCapi) subtitulosCapi.classList.remove("visible");
                                         
                                             audioCapi.play()
                                                 .then(() => {
