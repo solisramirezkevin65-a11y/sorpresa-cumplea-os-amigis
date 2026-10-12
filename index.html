@@ -1382,6 +1382,25 @@
            CELULAR
         ========================================= */
 
+        /* Laptop y tabletas: el cuadro se superpone suavemente al borde inferior del sticker.
+           La regla no afecta a los celulares, que conservan su distribución actual. */
+        @media (min-width: 601px) {
+            .zonaNeytiri {
+                margin-bottom: -18px;
+            }
+
+            .nombreNeytiri {
+                position: relative;
+                z-index: 2;
+                margin-bottom: -24px;
+            }
+
+            .dialogo {
+                position: relative;
+                z-index: 3;
+            }
+        }
+
         @media (max-width: 600px) {
             #escenaNeytiri {
                 align-items: center;
