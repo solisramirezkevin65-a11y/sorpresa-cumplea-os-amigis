@@ -1382,25 +1382,6 @@
            CELULAR
         ========================================= */
 
-        /* Laptop y tabletas: el cuadro se superpone suavemente al borde inferior del sticker.
-           La regla no afecta a los celulares, que conservan su distribución actual. */
-        @media (min-width: 601px) {
-            .zonaNeytiri {
-                margin-bottom: -18px;
-            }
-
-            .nombreNeytiri {
-                position: relative;
-                z-index: 2;
-                margin-bottom: -24px;
-            }
-
-            .dialogo {
-                position: relative;
-                z-index: 3;
-            }
-        }
-
         @media (max-width: 600px) {
             #escenaNeytiri {
                 align-items: center;
@@ -1543,7 +1524,7 @@
         @media (prefers-reduced-motion: reduce) { .piezaConfeti { animation-duration:24s !important; } }
 
         .panelSecuenciaCumple {
-            position:absolute; z-index:30; left:50%; top:72%; transform:translate(-50%,-50%);
+            position:absolute; z-index:30; left:50%; top:70%; transform:translate(-50%,-50%);
             width:min(88%,420px); padding:18px 20px; border:1px solid rgba(255,205,135,.65);
             border-radius:16px; background:rgba(24,12,31,.94); color:#fff0d1; text-align:center;
             box-shadow:0 0 24px rgba(255,145,58,.2); font:clamp(16px,2.5vw,21px)/1.4 Georgia,serif;
@@ -1563,8 +1544,8 @@
 
         /* Aparición sorpresa de Neytiri después de que el ambiente termine de iluminarse. */
         #neytiriSorpresaImagen {
-            position:absolute; z-index:24; left:50%; top:29%;
-            width:min(42vw, 230px); max-height:37vh; height:auto; object-fit:contain;
+            position:absolute; z-index:31; left:50%; top:14%;
+            width:min(42vw, 260px); max-height:35vh; height:auto; object-fit:contain;
             opacity:0; visibility:hidden; pointer-events:none;
             transform:translate(-50%, 22px) scale(.86);
             filter:drop-shadow(0 0 18px rgba(95,225,255,.42));
@@ -1584,9 +1565,22 @@
             0%,100% { margin-top:0; }
             50% { margin-top:-8px; }
         }
+        /* En móvil se conserva la composición compacta; el sticker permanece encima del diálogo. */
         @media (max-width:600px) {
-            #neytiriSorpresaImagen { top:27%; width:min(45vw,190px); max-height:32vh; }
-            .panelSecuenciaCumple { top:72%; padding:14px 15px; }
+            #neytiriSorpresaImagen { top:24%; width:min(45vw,190px); max-height:30vh; z-index:31; }
+            .panelSecuenciaCumple { top:70%; z-index:30; padding:14px 15px; }
+        }
+
+        /* Tabletas horizontales y laptops: separa el sticker del cuadro para evitar que lo tape. */
+        @media (min-width:601px) and (min-height:650px) {
+            #neytiriSorpresaImagen { top:12%; max-height:34vh; width:min(34vw,260px); }
+            .panelSecuenciaCumple { top:70%; width:min(88%,460px); }
+        }
+
+        /* Pantallas muy bajas: evita que el sticker y el mensaje se monten. */
+        @media (max-height:520px) {
+            #neytiriSorpresaImagen { top:7%; max-height:28vh; width:min(30vw,190px); }
+            .panelSecuenciaCumple { top:68%; padding:10px 14px; }
         }
         #escenaHalloween.velaApagada .llamaPastel { opacity:0; animation:none; transform:translateX(-50%) scale(.2); }
         #escenaHalloween.velaApagada .resplandorVela { opacity:0; animation:none; }
