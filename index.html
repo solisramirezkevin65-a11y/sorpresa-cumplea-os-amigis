@@ -1744,6 +1744,63 @@
         #escenaCapi .etiquetaCapi { position:absolute; z-index:12; top:5%; left:50%; transform:translateX(-50%); width:90%; text-align:center; color:#fff1ce; font:bold clamp(1.2rem,4vw,2.6rem)/1.1 Arial,sans-serif; letter-spacing:clamp(2px,.7vw,7px); text-shadow:0 0 12px #ff7b30,0 0 28px #9b4dff; opacity:0; transition:opacity 1.8s ease; }
         #escenaCapi.lucesCapi .etiquetaCapi { opacity:1; }
         @media(max-width:600px){#panelDialogoCapi{top:64%;width:91%}.adornoCapi.a5{top:11%}}
+        
+        /* =========================================
+           SUBTÍTULOS MUSICALES DE CAPI DJ
+        ========================================= */
+        
+        .subtitulosCapi {
+            position: absolute;
+            z-index: 35;
+            left: 50%;
+            bottom: 5%;
+            transform: translateX(-50%);
+        
+            width: min(92%, 1050px);
+            padding: 12px 20px;
+        
+            text-align: center;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            font-size: clamp(1rem, 2.3vw, 1.65rem);
+            font-weight: 800;
+            line-height: 1.4;
+        
+            text-shadow:
+                0 2px 4px #000,
+                0 0 10px #a855f7,
+                0 0 20px #00cfff;
+        
+            background: rgba(15, 5, 35, 0.62);
+            border: 1px solid rgba(130, 220, 255, 0.55);
+            border-radius: 14px;
+        
+            box-shadow:
+                0 0 18px rgba(0, 200, 255, 0.22),
+                inset 0 0 15px rgba(168, 85, 247, 0.12);
+        
+            backdrop-filter: blur(6px);
+        
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+        
+        .subtitulosCapi.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @media (max-width: 600px) {
+            .subtitulosCapi {
+                bottom: 4%;
+                width: 94%;
+                padding: 10px 12px;
+                font-size: clamp(0.85rem, 3.8vw, 1.1rem);
+            }
+        }
+
 
     </style>
 </head>
@@ -2001,6 +2058,14 @@
             </div>
             <!-- Audio que comienza al terminar el último diálogo de Capi -->
             <audio id="audioCapi" preload="auto" src="musica/Mix_20261011202126.mp3"></audio>
+            
+            <!-- Subtítulos musicales de Capi DJ -->
+            <div id="subtitulosCapi"
+                 class="subtitulosCapi"
+                 aria-live="polite"
+                 aria-atomic="true">
+            </div>
+
             <div id="panelDialogoCapi" role="dialog" aria-live="polite" aria-label="Diálogo de Capi">
                 <p id="mensajeCapi"></p><div id="accionesCapi"></div>
             </div>
@@ -2458,6 +2523,59 @@
         const zonaStickerCapi = document.querySelector(".zonaStickerCapi");
         const audioCapi = document.getElementById("audioCapi");
         let numeroStickerCapi = 0;
+        /* =========================================
+           SUBTÍTULOS MUSICALES DE CAPI DJ
+        ========================================= */
+        
+        const subtitulosCapi = document.getElementById("subtitulosCapi");
+        
+        const cancionesCapi = [
+            { inicio: 0,    final: 222,  titulo: "🎵 Ojos Así — Shakira 🎵" },
+            { inicio: 223,  final: 377,  titulo: "🎵 Loba — Shakira 🎵" },
+            { inicio: 378,  final: 560,  titulo: "🎵 You Spin Me Round — Dead Or Alive 🎵" },
+            { inicio: 561,  final: 774,  titulo: "🎵 Big in Japan — Alphaville 🎵" },
+            { inicio: 775,  final: 922,  titulo: "🎵 Jolene — Dolly Parton 🎵" },
+            { inicio: 923,  final: 1137, titulo: "🎵 Bring Me To Life — Evanescence 🎵" },
+            { inicio: 1138, final: 1286, titulo: "🎵 Rape Me — Nirvana 🎵" },
+            { inicio: 1287, final: 1530, titulo: "🎵 Hijo de la Luna — Mecano 🎵" }
+        ];
+        
+        function actualizarSubtitulosCapi() {
+            if (!audioCapi || !subtitulosCapi) return;
+        
+            const tiempo = audioCapi.currentTime;
+        
+            // Bienvenida durante los primeros 5 segundos.
+            if (tiempo < 5) {
+                subtitulosCapi.textContent =
+                    "🎧 ¡Bienvenida a la cabina de Capi DJ, Niky! ¡Que comience la fiesta! 🎉💙";
+        
+                subtitulosCapi.classList.add("visible");
+                return;
+            }
+        
+            const cancionActual = cancionesCapi.find(cancion =>
+                tiempo >= cancion.inicio &&
+                tiempo < cancion.final
+            );
+        
+            if (cancionActual) {
+                subtitulosCapi.textContent = cancionActual.titulo;
+                subtitulosCapi.classList.add("visible");
+            } else {
+                subtitulosCapi.classList.remove("visible");
+            }
+        }
+        
+        audioCapi.addEventListener("timeupdate", actualizarSubtitulosCapi);
+        
+        audioCapi.addEventListener("pause", () => {
+            subtitulosCapi.classList.remove("visible");
+        });
+        
+        audioCapi.addEventListener("ended", () => {
+            subtitulosCapi.classList.remove("visible");
+        });
 
         function mostrarStickerCapi(numero) {
             // Los stickers 04 y 05 fueron normalizados a Capi_04.png / Capi_05.png.
