@@ -2517,15 +2517,25 @@
                                         mensajeCapi.textContent = "";
                                         accionesCapi.replaceChildren();
 
+                                        
                                         if (audioCapi) {
                                             audioCapi.currentTime = 0;
-                                            const promesa = audioCapi.play();
-                                            if (promesa && typeof promesa.catch === "function") {
-                                                promesa.catch(() => {
-                                                    // Si el navegador bloquea el audio, se mantiene la escena y el usuario puede
-                                                    // iniciar el archivo manualmente desde el navegador.
+                                        
+                                            audioCapi.play()
+                                                .then(() => {
+                                                    console.log("✅ La mezcla de Capi empezó a reproducirse.");
+                                                })
+                                                .catch((error) => {
+                                                    console.error(
+                                                        "❌ Error al reproducir la mezcla de Capi:",
+                                                        error
+                                                    );
+                                        
+                                                    console.error(
+                                                        "Ruta utilizada:",
+                                                        audioCapi.currentSrc
+                                                    );
                                                 });
-                                            }
                                         }
                                     });
                                 });
